@@ -25,34 +25,39 @@ int	huetorgb(int hue, double r, double g, double b)
     h = (hue % 360) / 60.0;
     c = 1.0;
     x = c * (1.0 - fabs(fmod(h, 2) - 1.0));
-    r = (h >= 1 && h < 2) || (h >= 4 && h < 5) ? x : ((h >= 0 && h < 1) || (h >= 5 && h < 6) ? c : r);
+    /*r = (h >= 1 && h < 2) || (h >= 4 && h < 5) ? x : ((h >= 0 && h < 1) || (h >= 5 && h < 6) ? c : r);
     g = (h >= 3 && h < 4) || (h >= 0 && h < 1) ? x : ((h >= 1 && h < 2) || (h >= 2 && h < 3) ? c : g);
-    b = (h >= 5 && h < 6) || (h >= 2 && h < 3) ? x : ((h >= 3 && h < 4) || (h >= 4 && h < 5) ? c : b);
-    /*if (h >= 0 && h < 1)
+    b = (h >= 5 && h < 6) || (h >= 2 && h < 3) ? x : ((h >= 3 && h < 4) || (h >= 4 && h < 5) ? c : b);*/
+    if (h >= 0 && h < 1)
     {
         r = c;
         g = x;
-    } else if (h >= 1 && h < 2)
+    }
+    else if (h >= 1 && h < 2)
     {
         r = x;
         g = c;
-    } else if (h >= 2 && h < 3)
+    }
+    else if (h >= 2 && h < 3)
     {
         g = c;
         b = x;
-    } else if (h >= 3 && h < 4)
+    }
+    else if (h >= 3 && h < 4)
     {
         g = x;
         b = c;
-    } else if (h >= 4 && h < 5)
+    }
+    else if (h >= 4 && h < 5)
     {
         r = x;
         b = c;
-    } else if (h >= 5 && h < 6)
+    }
+    else if (h >= 5 && h < 6)
     {
         r = c;
         b = x;
-    }*/
+    }
     hue = encode_trgb(0, r, g, b);
     return (hue);
 }
