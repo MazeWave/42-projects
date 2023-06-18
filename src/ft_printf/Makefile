@@ -18,6 +18,10 @@ RM		= rm -rf
 NAME	= ft_printf.a
 
 #rules
+%.o: %.c
+		@$(CC) $(CFLAGS) -c $< -o $@
+		@printf "$<                             \r"
+
 all : $(NAME)
 
 $(NAME) : $(OBJS)

@@ -6,37 +6,40 @@
 #    By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 18:55:24 by ldalmass          #+#    #+#              #
-#    Updated: 2023/06/16 16:16:23 by ldalmass         ###   ########.fr        #
+#    Updated: 2023/06/18 20:21:47 by ldalmass         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FRACTOL			= fractol.c
+FRACTOL			=	fractol.c \
+					julia.c \
+					mandelbrot.c \
+					my_mlx_pixel_put.c \
+					ft_huetorgb.c \
+					ft_encode_trgb.c \
+					scanline.c \
+					pre_processor.c \
+					usage.c \
 
-OBJS_FRACTOL	= $(FRACTOL:.c=.o)
+OBJS_FRACTOL	=	$(FRACTOL:.c=.o)
 
-CC				= cc
+CC				=	cc
 
-UTILS			= ./src/utils/utils.a
+PRINTF			=	./src/ft_printf/ft_printf.a
 
-PRINTF			= ./src/ft_printf/ft_printf.a
+LIBFT			=	./src/libft/libft.a
 
-LIBFT			= ./src/libft/libft.a
+CFLAGS			=	-Wall -Werror -Wextra
 
-CFLAGS			= -Wall -Werror -Wextra
+RM				=	rm -rf
 
-RM				= rm -rf
-
-NAME_FRACTOL	= fractol
+NAME_FRACTOL	=	fractol
 
 #rules
 all : $(NAME_FRACTOL)
 
-$(NAME_FRACTOL) : $(UTILS) $(LIBFT) $(PRINTF) $(OBJS_FRACTOL)
-	$(CC) $(OBJS_FRACTOL) $(LIBFT) $(PRINTF) $(UTILS) -lmlx -framework OpenGL -framework AppKit -o $(NAME_FRACTOL)
+$(NAME_FRACTOL) : $(LIBFT) $(PRINTF) $(OBJS_FRACTOL)
+	$(CC) $(OBJS_FRACTOL) $(LIBFT) $(PRINTF) -lmlx -framework OpenGL -framework AppKit -o $(NAME_FRACTOL)
 	$(RM) $(NAME_FRACTOL).o
-
-$(UTILS) :
-	make -C ./src/utils
 
 $(LIBFT) :
 	make -C ./src/libft
@@ -46,7 +49,6 @@ $(PRINTF) :
 
 clean :
 	$(RM) $(OBJS_FRACTOL)
-	make clean -C ./src/utils
 	make clean -C ./src/libft
 	make clean -C ./src/ft_printf
 

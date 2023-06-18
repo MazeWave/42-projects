@@ -1,20 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   julia.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/18 15:52:30 by ldalmass          #+#    #+#             */
+/*   Updated: 2023/06/18 16:56:28 by ldalmass         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static int	julia(int x, int y, double zx, double zy)
+#include "fractol.h"
+
+double	julia(int x, int y, t_frac *frac)
 {
 	int		n;
-	double	sx;
-	double	sy;
-	double	tx;
+	double	nx;
+	double	ny;
+	double	ox;
+	double	oy;
 
+	ox = 0;
+	oy = 0;
+	nx = 1.5 * (x - WIDTH / 2) / (0.75 * frac->zoomx * WIDTH) + frac->offx;
+	ny = (y - HEIGHT / 2) / (0.5 * frac->zoomy * HEIGHT) + frac->offy;
 	n = 0;
-	tx = 0.0;
-	sx = (double)x / (WIDTH / 7.0) - 2.0;
-	sy = (double)y / (HEIGHT / 7.0) - 2.0;
-	while (((zx * zx) + (zy * zy) < 4) && (n < ITERATION))
-	{	
-		tx = (zx * zx) - (zy * sx);
-		zy = (2.0 * zx * zy) + sy;
-		zx = tx + sy;
+	while (n < ITERATION)
+	{
+		ox = nx;
+		oy = ny;
+		nx = (ox * ox) - (oy * oy) + frac->jx;
+		ny = (2 * ox * oy) + frac->jy;
+		if (((nx * nx) + (ny * ny)) > 4)
+			break ;
 		n++;
 	}
 	if (n == ITERATION)

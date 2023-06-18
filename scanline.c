@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   scanline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 19:21:56 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/06/16 16:59:07 by ldalmass         ###   ########.fr       */
+/*   Created: 2023/06/18 16:13:55 by ldalmass          #+#    #+#             */
+/*   Updated: 2023/06/18 21:33:12 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "fractol.h"
 
-# include <math.h>
+void	scanline(t_data img, char argv, t_frac *frac)
+{
+	int	x;
+	int	y;
 
-int	ft_encode_trgb(int t, int r, int g, int b);
-int	ft_huetorgb(int hue, double r, double g, double b);
-
-#endif
+	x = -1;
+	y = -1;
+	while (++x < WIDTH)
+	{
+		while (++y < HEIGHT)
+		{
+			if (argv == 'm')
+				my_mlx_pixel_put(&img, x, y,
+					ft_huetorgb(mandelbrot(x, y, frac), 0, 0, 0));
+			else
+				my_mlx_pixel_put(&img, x, y,
+					ft_huetorgb(julia(x, y, frac), 0, 0, 0));
+		}
+		y = -1;
+	}
+	return ;
+}

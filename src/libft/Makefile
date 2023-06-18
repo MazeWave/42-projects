@@ -33,7 +33,8 @@ SRCS 	= ft_isalnum.c \
 		  ft_strtrim.c \
 		  ft_split.c \
 		  ft_dec_to_bin.c \
-		  ft_chrexist.c
+		  ft_chrexist.c \
+		  ft_atod.c \
 
 SRCS_BONUS = ft_lstnew.c \
 			 ft_lstadd_front.c \
@@ -58,6 +59,10 @@ RM		= rm -rf
 NAME	= libft.a
 
 #rules
+%.o: %.c
+		@$(CC) $(CFLAGS) -c $< -o $@
+		@printf "$<                             \r"
+
 all : $(NAME)
 
 $(NAME) : $(OBJS)

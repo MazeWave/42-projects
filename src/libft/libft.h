@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:04:16 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/05/24 00:26:50 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/06/18 21:30:01 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ char	*ft_dec_to_bin(unsigned int n);
 void	ft_writer(char *str);
 char	*ft_reverse(char *str);
 int		ft_chrexist(const char *s, int c);
+double	ft_atod(const char *str);
 
 #endif
