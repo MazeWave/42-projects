@@ -6,7 +6,7 @@
 #    By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 18:55:24 by ldalmass          #+#    #+#              #
-#    Updated: 2023/06/18 20:21:47 by ldalmass         ###   ########.fr        #
+#    Updated: 2023/06/20 20:17:50 by ldalmass         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,10 @@ FRACTOL			=	fractol.c \
 					scanline.c \
 					pre_processor.c \
 					usage.c \
+					frac_init.c \
+					key_hook.c \
+					mouse_hook.c \
+					close_frac.c \
 
 OBJS_FRACTOL	=	$(FRACTOL:.c=.o)
 

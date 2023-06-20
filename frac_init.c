@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_processor.c                                    :+:      :+:    :+:   */
+/*   frac_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/18 16:14:44 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/06/20 16:46:35 by ldalmass         ###   ########.fr       */
+/*   Created: 2023/06/20 17:44:22 by ldalmass          #+#    #+#             */
+/*   Updated: 2023/06/20 19:04:45 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	pre_processor(t_data *img, t_frac *frac, char **argv, int argc)
+t_frac	frac_init(t_frac *frac, void *mlx, void *mlx_win, t_data img)
 {
-	if (argc <= 1 || argc >= 5 || argc == 3)
-	{
-		usage();
-		return (0);
-	}
-	else if (argv[1][0] == 'm' && argc == 2)
-		scanline(*img, 'm', frac);
-	else if (argv[1][0] == 'j' && argc == 4)
-	{
-		frac->jx = ft_atod(argv[2]);
-		frac->jy = ft_atod(argv[3]);
-		scanline(*img, 'j', frac);
-	}
-	else
-		usage();
-	return (0);
+	frac->zoomx = 1;
+	frac->zoomy = 1;
+	frac->offx = 0.0;
+	frac->offy = 0.0;
+	frac->mx = 0.0;
+	frac->my = 0.0;
+	frac->color = 360 * 360 * 360;
+	frac->mlx = mlx;
+	frac->win = mlx_win;
+	frac->img = img;
+	return (*frac);
 }

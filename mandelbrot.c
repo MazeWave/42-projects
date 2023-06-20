@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 22:35:51 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/06/18 20:34:27 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/06/20 19:00:18 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ int	mandelbrot(int x, int y, t_frac *frac)
 	}
 	if (n == ITERATION)
 		return (-1);
-	return (n + (ITERATION));
+	return (n + frac->color);
 }

@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 15:52:30 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/06/18 16:56:28 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:48:05 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ double	julia(int x, int y, t_frac *frac)
 	}
 	if (n == ITERATION)
 		return (-1);
-	return (n);
+	return (n + frac->color);
 }
