@@ -1,0 +1,85 @@
+char	*ft_read_current(int fd, char *stash)
+{
+	char	buffer[BUFFER_SIZE + 1];	//+1 to null terminate
+	int 	read_value;
+
+	//	PREMIER TRY
+	read_value = read(fd, buffer, BUFFER_SIZE);
+	buffer[read_value] = '\0';	//null terminate
+	if (read_value < 0)
+		return (stash = NULL);
+	if (!stash)
+		stash = ft_stringdup(buffer);
+	else
+		stash = ft_stringjoin(stash, buffer);
+
+	//	BOUCLE TANT QUE '\n' et '\0' N'EST PAS TROUVE
+	while ((ft_stringchr(buffer,'\n') == -1) && (ft_stringchr(buffer,'\0') != -1))
+	{
+		read_value = read(fd, buffer, BUFFER_SIZE);
+		buffer[read_value] = '\0';	//null terminate
+		stash = ft_stringjoin(stash, buffer);	//add buffer to stash + null terminate
+		//printf("-_-HERE-_-\n");
+		if (read_value == 0)
+		{
+			//printf("[0]DONE[0]\n");
+			break;
+		}
+	}
+	//printf("STASH === [%s]\t\t", stash);
+	return (stash);	//return la ligne a nettoyer protégée des leaks
+}
+
+
+char	*ft_read_current(int fd, char *stash)
+{
+	char	buffer[BUFFER_SIZE + 1];	//+1 to null terminate
+	int 	read_value;
+
+	read_value = read(fd, buffer, BUFFER_SIZE);
+	if (read_value < 0)
+		return (NULL);
+	printf("ŸESTT\n");
+	buffer[read_value] = '\0';
+	if (!stash)
+		stash = ft_stringdup(buffer);
+	else
+		stash = ft_stringjoin(stash, buffer);
+	while (read_value > 0)
+	{
+		read_value = read(fd, buffer, BUFFER_SIZE);
+		buffer[read_value] = '\0';
+		stash = ft_stringjoin(stash, buffer);
+	}
+	return (stash);
+}
+
+char	*ft_stringjoin(char *s1, char *s2)
+{
+	char		*s3;
+	size_t		i;
+	size_t		j;
+	size_t		lenone;
+	size_t		lentwo;
+
+	if (!s1)
+	{
+		s1 = malloc(sizeof(char) * 1);
+		s1[0] = '\0';
+	}
+	lenone = ft_stringlen(s1);
+	lentwo = ft_stringlen(s2);
+	j = -1;
+	i = lenone + lentwo;
+	s3 = malloc(sizeof(char) * (i + 1));
+	if (!s3)
+		return (NULL);
+	i = -1;
+	while (++i < lenone)
+		s3[i] = s1[i];
+	while (++j < lentwo)
+		s3[i + j] = s2[j];
+	s3[i + j] = '\0';
+	free(s1);
+	return (s3);
+}
