@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 19:11:58 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/07/07 23:00:39 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/07/08 00:21:49 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	parser(t_ps *ps)
 	while (temp)
 	{
 		parsing_error += check_doublon(ps, temp->value, temp->index);
-		ft_printf("Parsing error doublon : %d\n", parsing_error);
 		temp = temp->next;
 	}
+	ft_printf("Parsing error doublon : %d\n", parsing_error);
 	return (parsing_error);
 }
