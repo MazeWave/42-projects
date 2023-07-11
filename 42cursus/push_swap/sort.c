@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:33:21 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/07/11 19:00:55 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/07/11 19:07:16 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,12 @@ static void	smol_sort(t_ps *pa)
 		return ;	//123
 	else if (pa->value < pa->next->value && pa->next->value > pa->next->next->value)	//Ex : 1<3>2
 	{
-		ra(pa, 1);	//321
-		sa(pa, 1);	//231
-		rra(pa, 1);	//123
+		sa(pa, 1);	//312
+		ra(pa, 1);	//123
 		return ;
 	}
 	else if (pa->value > pa->next->value && pa->next->value > pa->next->next->value)	//Ex : 3>2>1
 	{
-		ra(pa, 1);	//213
 		sa(pa, 1);	//123
 		return ;
 	}
