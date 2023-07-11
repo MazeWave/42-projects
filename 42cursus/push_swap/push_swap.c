@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 17:59:38 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/07/11 18:34:19 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/07/11 18:59:21 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	main(int argc, char **argv)
 	if (parsing_error == 0)
 		sort(ps_a, ps_b);
 	else
-		usage();
-	if (parsing_error > 0)
 		usage();
 	ft_printf("Parsing error : %d\n", parsing_error);
 	close_swap(ps_a);
