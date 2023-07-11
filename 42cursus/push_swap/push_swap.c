@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 17:59:38 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/07/07 22:54:32 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/07/11 18:34:19 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,17 @@ int	main(int argc, char **argv)
 	parsing_error += parser(ps_a);
 	print_stack(ps_a, 'A');
 	print_stack(ps_b, 'B');
-/*	if (parsing_error == 0)
-		sort(ps);
+	if (parsing_error == 0)
+		sort(ps_a, ps_b);
 	else
-		usage();*/
+		usage();
 	if (parsing_error > 0)
 		usage();
 	ft_printf("Parsing error : %d\n", parsing_error);
+	close_swap(ps_a);
+	return (0);
+}
+
 	/*pb(&ps_a, &ps_b);
 	print_stack(ps_a, 'A');
 	print_stack(ps_b, 'B');
@@ -60,6 +64,3 @@ int	main(int argc, char **argv)
 	ss(ps_a, ps_b);
 	print_stack(ps_a, 'A');
 	print_stack(ps_b, 'B');*/
-	close_swap(ps_a);
-	return (0);
-}

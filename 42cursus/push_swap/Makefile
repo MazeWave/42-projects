@@ -6,7 +6,7 @@
 #    By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 18:55:24 by ldalmass          #+#    #+#              #
-#    Updated: 2023/07/02 03:17:44 by ldalmass         ###   ########.fr        #
+#    Updated: 2023/07/11 18:34:51 by ldalmass         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ PUSH_SWAP				=	push_swap.c \
 							rra.c \
 							rrb.c \
 							rrr.c \
+							sort.c \
 
 
 PUSH_SWAP_B				=	push_swap_bonus.c \
