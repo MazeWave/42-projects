@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_stack.c                                      :+:      :+:    :+:   */
+/*   stack_len.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 19:25:39 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/07/14 23:53:56 by ldalmass         ###   ########.fr       */
+/*   Created: 2023/07/14 23:25:19 by ldalmass          #+#    #+#             */
+/*   Updated: 2023/07/14 23:33:23 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(t_ps *ps, char c)
+int	stack_len(t_ps *ps)
 {
 	t_ps	*temp;
+	int		len;
 
 	temp = ps;
-	ft_printf("\n%c Stack : [index] => [value]\n|\n", c);
+	len = 0;
 	while (temp)
 	{
-		ft_printf("|        [%d] => [%d]\n", temp->index, temp->value);
 		temp = temp->next;
+		len++;
 	}
-	ft_printf("----------------------------\n");
-	return ;
+	return (len);
 }

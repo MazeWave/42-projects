@@ -6,51 +6,57 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 18:33:21 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/07/11 19:07:16 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/07/14 23:36:58 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	smol_sort(t_ps *pa)
+static void	smol_sort(t_ps **pa)
 {
-	if (pa->value < pa->next->value && pa->next->value < pa->next->next->value)			//Ex : 1<2<3
+	int	a;
+	int	b;
+	int	c;
+
+	a = (*pa)->value;
+	b = (*pa)->next->value;
+	c = (*pa)->next->next->value;
+	if (a < b && b < c)			//Ex : 1<2<3
 		return ;	//123
-	else if (pa->value < pa->next->value && pa->next->value > pa->next->next->value)	//Ex : 1<3>2
+	else if (a < b && b > c)	//Ex : 1<3>2
 	{
-		sa(pa, 1);	//312
+		sa(*pa, 1);	//312
 		ra(pa, 1);	//123
-		return ;
 	}
-	else if (pa->value > pa->next->value && pa->next->value > pa->next->next->value)	//Ex : 3>2>1
+	else if (a > b && b > c)	//Ex : 3>2>1
 	{
-		sa(pa, 1);	//123
-		return ;
+		ra(pa, 1);	//213
+		print_stack(*pa, 'A');
+		sa(*pa, 1);	//123
+		print_stack(*pa, 'A');
 	}
-	else if (pa->value > pa->next->value && pa->next->value < pa->next->next->value)	//Ex : 2>1<3
-	{
-		sa(pa, 1);	//123
-		return ;
-	}
-	return ;
+	else if (a > b && b < c)	//Ex : 2>1<3
+		sa(*pa, 1);	//123
 }
 
-void	sort(t_ps *pa, t_ps *pb)
+void	sort(t_ps **pa, t_ps **pb)
 {
-	if (pa->argc <= 4)
+	if ((*pa)->argc <= 4)
 	{
 		smol_sort(pa);
 		return ;
 	}
-	else if (pa->argc > 4 && pa->argc <= 11)
+	if (!(*pb))
+		return ;
+	/*else if ((*pa)->argc > 4 && pa->argc <= 11)
 	{
 		med_sort(pa, pb);
 		return ;
 	}
-	else if (pa->argc > 11)
+	else if ((*pa)->argc > 11)
 	{
 		chonky_sort(pa, pb);
 		return ;
-	}
+	}*/
 	return ;
 }

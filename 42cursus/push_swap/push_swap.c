@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 17:59:38 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/07/11 18:59:21 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/07/14 23:56:05 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,37 +28,13 @@ int	main(int argc, char **argv)
 	parsing_error = 0;
 	parsing_error += parser(ps_a);
 	print_stack(ps_a, 'A');
-	print_stack(ps_b, 'B');
+	ft_printf("////////// Parsing error : %d\n", parsing_error);
 	if (parsing_error == 0)
-		sort(ps_a, ps_b);
+		sort(&ps_a, &ps_b);
 	else
 		usage();
-	ft_printf("Parsing error : %d\n", parsing_error);
+	print_stack(ps_a, 'A');
+	ft_printf("Stack len = %d\n", stack_len(ps_a));
 	close_swap(ps_a);
 	return (0);
 }
-
-	/*pb(&ps_a, &ps_b);
-	print_stack(ps_a, 'A');
-	print_stack(ps_b, 'B');
-	pb(&ps_a, &ps_b);
-	print_stack(ps_a, 'A');
-	print_stack(ps_b, 'B');
-	pb(&ps_a, &ps_b);
-	print_stack(ps_a, 'A');
-	print_stack(ps_b, 'B');
-	pa(&ps_a, &ps_b);
-	print_stack(ps_a, 'A');
-	print_stack(ps_b, 'B');
-	pb(&ps_a, &ps_b);
-	print_stack(ps_a, 'A');
-	print_stack(ps_b, 'B');
-	ra(&ps_a, 1);
-	print_stack(ps_a, 'A');
-	print_stack(ps_b, 'B');
-	rb(&ps_b, 1);
-	print_stack(ps_a, 'A');
-	print_stack(ps_b, 'B');
-	ss(ps_a, ps_b);
-	print_stack(ps_a, 'A');
-	print_stack(ps_b, 'B');*/

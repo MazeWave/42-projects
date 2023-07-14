@@ -6,7 +6,7 @@
 #    By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 18:55:24 by ldalmass          #+#    #+#              #
-#    Updated: 2023/07/11 18:34:51 by ldalmass         ###   ########.fr        #
+#    Updated: 2023/07/14 23:32:02 by ldalmass         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ PUSH_SWAP				=	push_swap.c \
 							print_stack.c \
 							check_limits.c \
 							parser.c \
+							stack_len.c \
 							sa.c \
 							sb.c \
 							ss.c \
