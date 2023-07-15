@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:17:20 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/07/14 23:32:14 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/07/15 03:41:37 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	usage(void);
 int		check_limits(t_ps *ps);
 int		check_types(t_ps *ps);
 int		check_doublon(t_ps *ps, int value, int index);
-void	ft_create_stacks(t_ps *ps, int i);
+void	create_stacks(t_ps *ps, int i);
 void	close_swap(t_ps *ps_a);
 void	print_stack(t_ps *ps, char c);
 int		parser(t_ps *ps);
@@ -47,6 +47,8 @@ void	rr(t_ps **ps_a, t_ps **ps_b);
 void	rra(t_ps **ps, int p);
 void	rrb(t_ps **ps, int p);
 void	rrr(t_ps **ps_a, t_ps **ps_b);
-void	sort(t_ps **pa, t_ps **pb);
+void	choose_sort(t_ps **pa, t_ps **pb);
+void	push_min(t_ps **pa, t_ps **pb);
+void	push_max(t_ps **pa, t_ps **pb);
 
 #endif

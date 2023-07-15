@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:56:14 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/06/27 19:26:04 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/07/15 03:55:33 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_doublon(t_ps *ps, int value, int index)
 	{
 		if (temp->value == value && temp->index < index)
 		{
-			ft_printf("ERROR DOUBLON	: %d == %d\n", temp->value, value);
+			//ft_printf("ERROR DOUBLON	: %d == %d\n", temp->value, value);
 			return (1);
 		}
 		temp = temp->next;

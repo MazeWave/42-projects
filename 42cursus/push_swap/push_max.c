@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_stacks.c                                 :+:      :+:    :+:   */
+/*   push_max.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 19:16:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/06/22 22:35:40 by ldalmass         ###   ########.fr       */
+/*   Created: 2023/07/15 02:46:53 by ldalmass          #+#    #+#             */
+/*   Updated: 2023/07/15 02:47:50 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_create_stacks(t_ps *ps, int i)
+static int	find_max(t_ps *ps)
 {
-	t_ps	*new;
 	t_ps	*temp;
+	int		max;
 
 	temp = ps;
-	ps->value = ft_atoi(ps->argv[1]);
-	ps->index = 0;
-	while (i < ps->argc)
+	max = temp->value;
+	while (temp)
 	{
-		new = malloc(sizeof(t_ps));
-		if (!new || !ps)
-			return ;
-		new->value = ft_atoi(ps->argv[i]);
-		new->index = i - 1;
-		new->next = NULL;
-		while (temp->next)
-			temp = temp->next;
-		temp->next = new;
-		i++;
+		if (temp->value > max)
+			max = temp->value;
+		temp = temp->next;
 	}
+	return (max);
+}
+
+void	push_max(t_ps **ps_a, t_ps **ps_b)
+{
+	int	max;
+
+	max = find_max(*ps_a);
+	while ((*ps_a)->value != max)
+		ra(ps_a, 1);
+	pb(ps_a, ps_b);
 	return ;
 }

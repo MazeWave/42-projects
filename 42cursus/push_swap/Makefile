@@ -6,7 +6,7 @@
 #    By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/11 18:55:24 by ldalmass          #+#    #+#              #
-#    Updated: 2023/07/14 23:32:02 by ldalmass         ###   ########.fr        #
+#    Updated: 2023/07/15 03:44:31 by ldalmass         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ PUSH_SWAP				=	push_swap.c \
 							usage.c \
 							check_types.c \
 							check_doublon.c \
-							ft_create_stacks.c \
+							create_stacks.c \
 							close_swap.c \
 							print_stack.c \
 							check_limits.c \
@@ -31,7 +31,9 @@ PUSH_SWAP				=	push_swap.c \
 							rra.c \
 							rrb.c \
 							rrr.c \
-							sort.c \
+							choose_sort.c \
+							push_min.c \
+							push_max.c \
 
 
 PUSH_SWAP_B				=	push_swap_bonus.c \
