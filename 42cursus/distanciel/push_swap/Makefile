@@ -34,6 +34,7 @@ PUSH_SWAP				=	push_swap.c \
 							choose_sort.c \
 							push_min.c \
 							push_max.c \
+							create_index.c \
 
 
 PUSH_SWAP_B				=	push_swap_bonus.c \

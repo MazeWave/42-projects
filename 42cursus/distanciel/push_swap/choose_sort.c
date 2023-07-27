@@ -49,33 +49,22 @@ static void	high_five_sort(t_ps **ps_a, t_ps **ps_b)
 	return ;
 }
 
-/*static void	chonky_sort(t_ps **ps_a, t_ps **ps_b)
-{
-	while (stack_len(*ps_a) > 5)
-		pb(ps_a, ps_b);
-	high_five_sort(ps_a, ps_b);
-	while (stack_len(*ps_b) != 0)
-		pa(ps_a, ps_b);
-	return ;
-}*/
-
-	//ft_printf("HERE\n");
-
-/*static void	chonky_sort(t_ps **ps_a, t_ps **ps_b)
+static void	chonky_sort(t_ps **ps_a, t_ps **ps_b)
 {
 	while (stack_len(*ps_a) != 0)
 		push_min(ps_a, ps_b);
 	while (stack_len(*ps_b) != 0)
 		pa(ps_a, ps_b);
 	return ;
-}*/
-
-static void	chonky_sort(t_ps **ps_a, t_ps **ps_b)
-{
-	pb(ps_a, ps_b);
-	pa(ps_a, ps_b);
-	return ;
 }
+
+/*static void	chonky_sort(t_ps **ps_a, t_ps **ps_b)
+{
+	int	limmit;
+
+	limit = 20;
+	return ;
+}*/
 
 void	choose_sort(t_ps **pa, t_ps **pb)
 {
