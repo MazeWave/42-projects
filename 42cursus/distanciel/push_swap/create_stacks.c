@@ -16,6 +16,7 @@ void	create_stacks(t_ps *ps, int i)
 {
 	t_ps	*new;
 	t_ps	*temp;
+	
 
 	temp = ps;
 	ps->value = ft_atoi(ps->argv[1]);

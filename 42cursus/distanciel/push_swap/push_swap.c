@@ -48,7 +48,6 @@ int	main(int argc, char **argv)
 	ps_a->argc = argc;
 	parsing_error = 0;
 	parsing_error += parser(ps_a);
-	print_stack(ps_a, 'A');
 	create_index(ps_a, 1);
 	print_stack(ps_a, 'A');
 	ft_printf("////////// Parsing error : %d\n", parsing_error);

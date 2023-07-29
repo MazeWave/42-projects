@@ -35,6 +35,7 @@ PUSH_SWAP				=	push_swap.c \
 							push_min.c \
 							push_max.c \
 							create_index.c \
+							nearest_neighbor.c \
 
 
 PUSH_SWAP_B				=	push_swap_bonus.c \

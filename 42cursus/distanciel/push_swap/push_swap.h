@@ -51,5 +51,6 @@ void	choose_sort(t_ps **pa, t_ps **pb);
 void	push_min(t_ps **pa, t_ps **pb);
 void	push_max(t_ps **pa, t_ps **pb);
 void	create_index(t_ps *ps, int i);
+int		nearest_neighbor(t_ps *ps, int index);
 
 #endif

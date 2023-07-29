@@ -51,10 +51,22 @@ static void	high_five_sort(t_ps **ps_a, t_ps **ps_b)
 
 static void	chonky_sort(t_ps **ps_a, t_ps **ps_b)
 {
+	//int	i;
+
+	//ft_printf("Pour index = %d, plus proche = %d\n", (*ps_a)->next->next->index, nearest_neighbor(*ps_a, (*ps_a)->next->next->index));
 	while (stack_len(*ps_a) != 0)
-		push_min(ps_a, ps_b);
+	{
+		if (nearest_neighbor(*ps_a, (*ps_a)->index) != -1)
+		{
+			while (nearest_neighbor(*ps_a, (*ps_a)->index) > (*ps_a)->index)
+				ra(ps_a, 1);
+			pb(ps_a, ps_b);
+		}
+		pb(ps_a, ps_b);
+	}
 	while (stack_len(*ps_b) != 0)
 		pa(ps_a, ps_b);
+	//ft_printf("Pour index = %d, plus proche = %d\n", (*ps_a)->next->next->index, nearest_neighbor(*ps_a, (*ps_a)->next->next->index));
 	return ;
 }
 
