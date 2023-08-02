@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	check_order(t_ps *ps)
+int	check_order(t_ps *ps)
 {
 	t_ps	*temp;
 	int		min;
@@ -23,13 +23,13 @@ static int	check_order(t_ps *ps)
 	{
 		if (temp->value < min)
 		{
-			ft_printf("Unsorted\n");
+			//ft_printf("Unsorted\n");
 			return (1);
 		}
 		min = temp->value;
 		temp = temp->next;
 	}
-	ft_printf("Sorted\n");
+	//ft_printf("Sorted\n");
 	return (0);
 }
 
@@ -48,9 +48,10 @@ int	main(int argc, char **argv)
 	ps_a->argc = argc;
 	parsing_error = 0;
 	parsing_error += parser(ps_a);
-	create_index(ps_a, 1);
-	print_stack(ps_a, 'A');
-	ft_printf("////////// Parsing error : %d\n", parsing_error);
+	create_index(ps_a, 0);
+	//print_stack(ps_a, 'A');
+	//ft_printf("////////// Parsing error : %d\n", parsing_error);
+	//ft_printf("Stack len = %d\n", stack_len(ps_a));
 	if (parsing_error == 0)
 	{
 		if (check_order(ps_a) == 1)
@@ -58,10 +59,11 @@ int	main(int argc, char **argv)
 	}
 	else
 		usage();
-	ft_printf("\n/////////////////// Result :\n");
-	print_stack(ps_a, 'A');
-	print_stack(ps_b, 'B');
-	ft_printf("Stack len = %d\n", stack_len(ps_a));
+	//ft_printf("\n/////////////////// Result :\n");
+	//print_stack(ps_a, 'A');
+	//print_stack(ps_b, 'B');
+	//ft_printf("A Stack len = %d\n", stack_len(ps_a));
+	//ft_printf("B Stack len = %d\n", stack_len(ps_b));
 	close_swap(ps_a);
 	return (0);
 }

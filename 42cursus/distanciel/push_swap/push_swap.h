@@ -32,6 +32,7 @@ int		check_limits(t_ps *ps);
 int		check_types(t_ps *ps);
 int		check_doublon(t_ps *ps, int value, int index);
 void	create_stacks(t_ps *ps, int i);
+int		check_order(t_ps *ps);
 void	close_swap(t_ps *ps_a);
 void	print_stack(t_ps *ps, char c);
 int		parser(t_ps *ps);
@@ -51,6 +52,7 @@ void	choose_sort(t_ps **pa, t_ps **pb);
 void	push_min(t_ps **pa, t_ps **pb);
 void	push_max(t_ps **pa, t_ps **pb);
 void	create_index(t_ps *ps, int i);
-int		nearest_neighbor(t_ps *ps, int index);
+int		nearest_max_neighbor(t_ps *ps, int index);
+int		nearest_min_neighbor(t_ps *ps, int index);
 
 #endif
