@@ -37,7 +37,6 @@ static char	*ft_truncate(char *str)
 	if (neg == 1)
 		result[0] = '-';
 	ft_strlcpy(result + neg, str, result_len);
-	//ft_printf("truncated : %s\n", result);
 	return (result);
 }
 
