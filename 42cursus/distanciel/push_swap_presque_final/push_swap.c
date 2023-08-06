@@ -54,7 +54,6 @@ int	main(int argc, char **argv)
 	}
 	else
 		usage();
-	print_stack(ps_a, 'A');
 	close_swap(ps_a);
 	return (0);
 }

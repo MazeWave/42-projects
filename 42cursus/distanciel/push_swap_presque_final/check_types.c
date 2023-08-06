@@ -24,7 +24,7 @@ int	check_types(t_ps *ps)
 		while (ps->argv[i][j] != '\0')
 		{
 			if ((ps->argv[i][j] < '0' || ps->argv[i][j] > '9')
-			&& ps->argv[i][j] != '-' && ps->argv[i][j] != '+')
+			&& ps->argv[i][0] != '-' && ps->argv[i][0] != '+')
 				return (1);
 			j++;
 		}
