@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 18:40:26 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/08/22 19:10:42 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/08/24 17:38:43 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,22 @@
 
 void	create_threads(t_philos *philos, t_rules *rules)
 {
-	pthread_mutex_t		mutex;
-	unsigned int		i;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
-	while (i < rules->nb_philo)
+	j = 0;
+	while (i < rules->treshold)
 	{
-		philos[i].id = i;
-		philos[i].rules = rules;
-		pthread_mutex_init(&mutex, NULL);
-		pthread_create(&philos[i].thread, NULL, &routine, &philos[i]);
-		pthread_mutex_destroy(&mutex);
+		while (j < rules->nb_philo)
+		{
+			philos[j].id = j;
+			philos[j].rules = rules;
+			pthread_mutex_init(&philos[j].fork, NULL);
+			pthread_create(&philos[j].thread, NULL, &routine, &philos[j]);
+			pthread_mutex_destroy(&philos[j].fork);
+			j++;
+		}
 		i++;
 	}
 	return ;

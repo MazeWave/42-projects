@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:52:31 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/08/22 18:51:58 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/08/24 16:48:35 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int argc, char **argv)
 {
 	t_rules			le_reglement;
 	t_rules			*rules;
-	t_philos		*philos;
 
 	rules = &le_reglement;
 	rules->argc = argc;
@@ -27,12 +26,12 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	print_struct(rules);
-	philos = malloc(sizeof(t_philos) * rules->nb_philo);
-	if (!philos)
+	rules->philos = malloc(sizeof(t_philos) * rules->nb_philo);
+	if (!rules->philos)
 		return (1);
-	create_threads(philos, rules);
-	join_threads(philos, rules);
+	create_threads(rules->philos, rules);
+	join_threads(rules->philos, rules);
 	printf("Fin\n");
-	//close_philo(philo);
+	//close_philo(rules, 0);
 	return (0);
 }

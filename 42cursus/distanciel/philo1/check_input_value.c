@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 17:24:46 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/08/22 18:56:17 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:59:31 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_input_value(t_rules *rules)
 {
-	if (rules->nb_philo > 200)
+	if (rules->nb_philo > 2000000)
 		return (1);
 	if (rules->die_t > 1000000)
 		return (1);

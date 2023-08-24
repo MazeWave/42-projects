@@ -13,6 +13,8 @@
 #ifndef PHILO_H
 # define PHILO_H
 
+# include <time.h>
+# include <unistd.h>
 # include <pthread.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -26,12 +28,15 @@ typedef struct s_rules
 	unsigned int		eat_t;
 	unsigned int		sleep_t;
 	unsigned int		treshold;
+	struct s_philos		*philos;
 }				t_rules;
 
 typedef struct s_philos
 {
 	unsigned int		id;
 	pthread_t			thread;
+	pthread_mutex_t		fork;
+	unsigned int		locked;
 	t_rules				*rules;
 }				t_philos;
 
