@@ -13,6 +13,7 @@
 PHILO				=	philo.c \
 						utils1.c \
 						utils2.c \
+						utils3.c \
 						parser.c \
 						actions1.c \
 						run_simulation.c \
@@ -22,7 +23,7 @@ OBJS_PHILO			=	$(PHILO:.c=.o)
 
 CC					=	cc
 
-CFLAGS				=	-Wall -Werror -Wextra
+CFLAGS				=	-Wall -Werror -Wextra -g -pthread
 
 RM					=	rm -rf
 

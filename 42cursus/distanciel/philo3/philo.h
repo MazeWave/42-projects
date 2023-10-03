@@ -30,27 +30,22 @@ typedef struct s_rules
 	int					eat_t;
 	int					slp_t;
 	int					m_eat;
-	int					can_write;
 	long int			start_t;
+	int					can_write;
 	pthread_mutex_t		write;
+	int					*f_lock;
+	pthread_mutex_t		*forks;
 	struct s_phi		*phi;
-	struct s_forks		*forks;
 }						t_rules;
-
-typedef struct s_forks
-{
-	int					*lock;
-	pthread_mutex_t		*fork;
-}						t_forks;
 
 typedef struct s_phi
 {
 	int					id;
 	int					stop;
+	pthread_mutex_t		stopped;
 	int					eat_c;
-	int					last_eat;
+	long int			last_eat;
 	pthread_t			thread;
-	t_forks				*forks;
 	t_rules				*rules;
 }						t_phi;
 
@@ -65,12 +60,14 @@ int			parser(t_rules *data);
 long int	get_t(void);
 long int	elaps_t(t_rules *rules);
 void		print_msg(t_rules *data, int id, char *msg);
-int			take_forks(t_phi *phi, t_forks *forks);
-void		drop_forks(t_phi *phi, t_forks *forks);
+int			take_forks(t_phi *phi);
+void		drop_forks(t_phi *phi);
 void		a_think(t_phi *phi);
 void		a_eat(t_phi *phi);
 void		a_sleep(t_phi *phi);
-void		run_simulation(t_rules *data, t_phi *phi, t_forks *forks);
+int			eat_enough(t_rules *rules);
+void		run_simulation(t_rules *data);
+void		*watcher(void *data);
 void		*routine(void *data);
 
 /*void				close_philo(void *data, int error_code);

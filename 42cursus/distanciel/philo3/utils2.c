@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:55:16 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/09/28 21:47:44 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/10/03 01:09:11 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	fill_struct(t_rules *data)
 {
+	printf("argv[1] = %s\n", data->argv[1]); 
 	data->nb_phi = ft_atoi(ft_truncate(data->argv[1]));
 	data->die_t = ft_atoi(ft_truncate(data->argv[2]));
 	data->eat_t = ft_atoi(ft_truncate(data->argv[3]));
@@ -55,7 +56,7 @@ long int	elaps_t(t_rules *rules)
 void	print_msg(t_rules *data, int id, char *msg)
 {
 	pthread_mutex_lock(&data->write);
-	if (data->can_write == 1)
+	if (data->can_write == 1 && data->phi[id].stop == 0)
 		printf("%lu %d %s\n", elaps_t(data), id + 1, msg);
 	pthread_mutex_unlock(&data->write);
 }
