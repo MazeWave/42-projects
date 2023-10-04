@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:33:56 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/10/03 00:48:52 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:31:39 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,18 @@ void	*watcher(void *data)
 
 	rules = data;
 	i = -1;
+	print_struct(rules);
 	//usleep(1000 * phi->rules->die_t);
 	while (eat_enough(rules) == 0)
 	{
-		printf("\n\n\nHERE\n\n\n");
 		usleep(1000 * rules->die_t);
 		if (elaps_t(rules) - rules->phi[i].last_eat >= rules->die_t)
 		{
 			printf("////////////////////////////////STOP\n");
-			rules->can_write = 0;
-			rules->phi[i].stop = 1;
-			print_msg(rules, rules->phi[i].id, "died");
+			set_can_write(rules, 0);
+			//rules->phi[i].stop = 1;
+			//print_msg(rules, rules->phi[i].id, "died");
+			printf("%lu %d died\n", elaps_t(rules), rules->phi[i].id);
 			break;
 		}
 
@@ -46,11 +47,10 @@ void	*routine(void *data)
 	t_phi	*phi;
 
 	phi = data;
+	print_struct(phi->rules);
 	while (phi->stop == 0)
 	{
 		a_think(phi);
-		if (phi->stop == 1)
-			break;
 		a_eat(phi);
 		a_sleep(phi);
 	}

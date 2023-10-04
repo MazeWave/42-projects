@@ -42,9 +42,10 @@ typedef struct s_phi
 {
 	int					id;
 	int					stop;
-	pthread_mutex_t		stopped;
 	int					eat_c;
+	pthread_mutex_t		eat_c_l;
 	long int			last_eat;
+	pthread_mutex_t		last_eat_l;
 	pthread_t			thread;
 	t_rules				*rules;
 }						t_phi;
@@ -66,6 +67,8 @@ void		a_think(t_phi *phi);
 void		a_eat(t_phi *phi);
 void		a_sleep(t_phi *phi);
 int			eat_enough(t_rules *rules);
+int			check_write(t_rules *rules);
+void		set_can_write(t_rules *rules, int value);
 void		run_simulation(t_rules *data);
 void		*watcher(void *data);
 void		*routine(void *data);

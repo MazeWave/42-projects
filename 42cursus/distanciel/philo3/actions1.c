@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 19:59:04 by ldalmass          #+#    #+#             */
-/*   Updated: 2023/10/03 18:16:13 by ldalmass         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:10:37 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	take_forks(t_phi *phi)
 	// cas ou c'est le dernier philo : il doit prendre la fork suivante (la première fork), pour ne pas segfault
 	if (phi->id == phi->rules->nb_phi - 1)
 	{
-		printf("Last philo : %d == %d\n", phi->id, phi->rules->nb_phi - 1);
 		if (phi->rules->f_lock[phi->id] == 0 && phi->rules->f_lock[0] == 0)
 		{
 			//lock sa fork (gauche)
@@ -62,10 +61,7 @@ int	take_forks(t_phi *phi)
 			return (1);
 		}
 		else
-		{
-			print_msg(phi->rules, phi->id, "\n \x1B[31m ERROR hasn't taken a forkkkkk\x1B[0m");
-			usleep(1000 * 100);
-		}
+			return (0);
 	}
 	// cas normal, il prends la fork suivante
 	else if (phi->rules->f_lock[phi->id] == 0 && phi->rules->f_lock[phi->id + 1] == 0)
@@ -118,9 +114,18 @@ void	a_think(t_phi *phi)
 
 void	a_eat(t_phi *phi)
 {
+	// print et usleep
 	print_msg(phi->rules, phi->id, "is eating");
 	usleep(phi->rules->eat_t * 1000);
+	// log le time du last eat
+	pthread_mutex_lock(&phi->last_eat_l);
 	phi->last_eat = get_t();
+	pthread_mutex_unlock(&phi->last_eat_l);
+	// log le eat_counter
+	pthread_mutex_lock(&phi->eat_c_l);
+	phi->eat_c++;
+	pthread_mutex_unlock(&phi->eat_c_l);
+	// drop les forks et return
 	drop_forks(phi);
 	return ;
 }
