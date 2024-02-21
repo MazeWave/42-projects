@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+         #
+#    By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/15 17:57:18 by ldalmass          #+#    #+#              #
-#    Updated: 2024/02/16 17:41:20 by ldalmass         ###   ########.fr        #
+#    Updated: 2024/02/21 20:36:04 by ldalmass         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER	= g++
 FLAGS		= -Wall -Wextra -Werror -std=c++98
-NAME		= Harl
+NAME		= Fixed
 SRCS		=	main.cpp\
 				Fixed.cpp
 OBJS		= $(SRCS:.cpp=.o)

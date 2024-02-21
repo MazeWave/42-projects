@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/02/20 18:32:16 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:37:36 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ class   Fixed
 {
     private:
     int                 _fixed_point;
-    static const int    _raw_bit = 8;
+    static const int    _raw_bit = 0;
 
     public:
     Fixed(void);    // Default constructor
     ~Fixed(void);   // Default destructor
 
-    Fixed(const Fixed& input);          // Copy constructor
-    Fixed& operator=(Fixed& input);     // Operator
+    Fixed(const Fixed& input); // Copy constructor
+    Fixed& operator=(const Fixed& input); // Assignment operator overload
 
     int     getRawBits(void) const;
     void    setRawBits(int const raw);
