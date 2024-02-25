@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/02/22 16:01:33 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:31:02 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,34 @@
 # include <cstdlib>
 # include <string>
 # include <fstream>
+# include <cmath>
 
 /******************* CLASSES ********************/
 class   Fixed
 {
     private:
     int                 _value;
-    static const int    _raw_bit = 0;
+    static const int    _raw_bit = 8;
 
     public:
-    Fixed(void);    // Default constructor
-    ~Fixed(void);   // Default destructor
+    Fixed(void);	// Default constructor
+    ~Fixed(void);	// Default destructor
 
     Fixed(const Fixed& input);				// Copy constructor
-    Fixed& operator=(const Fixed& input);	// Assignment operator overload
+    Fixed&	operator=(const Fixed& input);	// Assignment operator overload
 
-    int     getRawBits(void) const;
-    void    setRawBits(int const raw);
+	Fixed(const int itof);					// Int to Float constructor 
+	Fixed(const float ftoi);				// Float to Int constructor
+
+	int		toInt(void) const;				// Float to Int converter
+	float	toFloat(void) const;			// Int to Float converter
+
+	int		getRawBits(void) const;
+	void	setRawBits(int const raw);
 };
 
 /****************** FUNCTIONS *******************/
+std::ostream&	operator<<(std::ostream& output, const Fixed& input);	// Output stream overload operator
 
 /******************* COLORS *********************/
 # define RESET		"\033[0m"
