@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:44:05 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/02/25 19:02:13 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:29:37 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Fixed::Fixed(void)
 
 Fixed::~Fixed(void)
 {
-    std::cout << RESET << "Default destructor called" << RESET << std::endl;
+    std::cout << RESET << "Destructor called" << RESET << std::endl;
     return;
 }
 
@@ -65,13 +65,13 @@ float		Fixed::toFloat(void) const
 
 int     Fixed::getRawBits(void) const
 {
-    std::cout << RESET << "getRawBits member function called" << RESET << std::endl;
+    // std::cout << RESET << "getRawBits member function called" << RESET << std::endl;
     return(this->_value);
 }
 
 void    Fixed::setRawBits(int const raw)
 {
-    std::cout << RESET << "setRawBits member function called" << RESET << std::endl;
+    // std::cout << RESET << "setRawBits member function called" << RESET << std::endl;
     this->_value = raw;
     return;
 }
