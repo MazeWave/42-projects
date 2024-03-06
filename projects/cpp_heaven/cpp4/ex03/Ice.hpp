@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:04:03 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/05 17:45:25 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:30:25 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,14 @@
 
 class	Ice: public AMateria
 {
-	private:
+	public:
+	Ice(void);
+	Ice(const Ice& input);
+	virtual	~Ice(void);
+
+	AMateria*	clone(void) const;
+	void		use(ICharacter& target);
+	Ice&		operator=(const Ice& input);
 };
 
 #endif

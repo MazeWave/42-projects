@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 14:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/05 17:48:08 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/05 21:00:58 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 /************* STANDARD LIBRARIES ***************/
 # include <iostream>
 # include <string>
+
+/****************** CLASSES *********************/
 # include "ICharacter.hpp"
 # include "Character.hpp"
 # include "AMateria.hpp"

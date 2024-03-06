@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 19:40:47 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/05 19:41:05 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:51:20 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ AMateria::AMateria(const AMateria& input)
 
 AMateria& AMateria::operator=(const AMateria& input)
 {
-	// Assignment operator overload
 	this->_type = input._type;
 	return (*this);
 }
@@ -56,13 +55,8 @@ void	AMateria::setType(std::string type)
 	return;
 }
 
-AMateria*	AMateria::clone(void) const
+void	AMateria::use(ICharacter& target)
 {
-	return (new AMateria(*this));
-}
-
-void	AMateria::use(int idx, ICharacter& target)
-{
-	std::cout << RESET << this->_name << " used " << target.getType() << RESET << std::endl;
+	std::cout << RESET << "* do nothing at " << target.getName() << " *" << RESET << std::endl;
 	return;
 }
