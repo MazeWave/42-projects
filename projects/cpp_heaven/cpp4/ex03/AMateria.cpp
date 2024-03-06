@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 19:40:47 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/06 18:51:20 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:20:14 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ AMateria::AMateria(void)
 
 AMateria::AMateria(const std::string& type)
 {
-	std::cout << MAGENTA << "AMateria constructor" << type << RESET << std::endl;
+	std::cout << MAGENTA << "AMateria constructor " << type << RESET << std::endl;
 	this->_type = type;
 	return;
 }

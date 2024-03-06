@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 14:49:38 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/05 18:17:53 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/06 20:44:48 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ class	Character: public ICharacter
 	public:
 	Character(const std::string& name);
 	Character(const Character& input);
-	~Character(void);
+	virtual	~Character(void);
 
 	Character&			operator=(const Character& input);
 	std::string const &	getName(void) const;
 	void				equip(AMateria* m);
 	void				unequip(int idx);
-	void				use(int idx, Character& target);
+	void				use(int idx, ICharacter& target);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:03:38 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/06 18:59:39 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/06 21:19:19 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ Cure::Cure(void) : AMateria("cure")
 Cure::Cure(const Cure& input) : AMateria(input)
 {
 	std::cout << MAGENTA << "Cure copy contructor" << RESET << std::endl;
+	return;
+}
+
+Cure::~Cure(void)
+{
+	std::cout << MAGENTA << "Cure destructor" << RESET << std::endl;
 	return;
 }
 

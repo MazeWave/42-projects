@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 20:28:04 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/05 17:45:03 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/06 19:47:11 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class   IMateriaSource
 {
     public:
-    virtual ~IMateriaSource() {}
+    virtual ~IMateriaSource(void) {}
     virtual void learnMateria(AMateria* m) = 0;
     virtual AMateria* createMateria(std::string const & type) = 0;
 };

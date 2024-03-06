@@ -3,20 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+         #
+#    By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/15 17:57:18 by ldalmass          #+#    #+#              #
-#    Updated: 2024/03/05 15:20:02 by ldalmass         ###   ########.fr        #
+#    Updated: 2024/03/06 20:38:53 by ldalmass         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER	= g++
 FLAGS		= -Wall -Wextra -Werror -std=c++98
-NAME		= Animal
+NAME		= InsertRandomMMORPGNameHere
 SRCS		=	main.cpp\
 				AMateria.cpp\
-				ICharacter.cpp\
-				IMateriaSource.cpp\
 				MateriaSource.cpp\
 				Character.cpp\
 				Cure.cpp\
