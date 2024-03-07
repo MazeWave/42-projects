@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:03:41 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/06 22:58:05 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:08:09 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ Character::Character(const Character& input)
 Character::~Character(void)
 {
 	std::cout << MAGENTA << "Character destructor " << this->getName() << RESET << std::endl;
-	// for (unsigned short i = 0; i < 4; i++)
-	// 	delete this->_inventory[i];
+	for (unsigned short i = 0; i < 4; i++)
+		delete this->_inventory[i];
 	return;
 }
 
@@ -55,7 +55,6 @@ std::string	const	&Character::getName(void) const
 
 void	Character::use(int idx, ICharacter& target)
 {
-	std::cout << RESET << this->_name << " used " << this->_inventory[idx]->getType() << RESET << std::endl;
 	if (idx < 0 || idx > 3)
 	{
 		std::cout << RED << "Error : out of band slot ! Use value between 0 and 3." << RESET << std::endl;
@@ -64,7 +63,10 @@ void	Character::use(int idx, ICharacter& target)
 	else
 	{
 		if (this->_inventory[idx] != NULL)
+		{
 			this->_inventory[idx]->use(target);
+			std::cout << RESET << this->_name << " used " << this->_inventory[idx]->getType() << RESET << std::endl;
+		}
 		else
 			std::cout << YELLOW << "You have no Materia at this inventory slot." << RESET << std::endl;
 	}
@@ -90,7 +92,7 @@ void	Character::equip(AMateria* m)
 {
 	for (unsigned short	i = 0; i < 4; i++)
 	{
-		if (this->_inventory[i] != NULL)
+		if (this->_inventory[i] == NULL)
 		{
 			this->_inventory[i] = m;
 			return;
