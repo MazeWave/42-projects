@@ -23,10 +23,9 @@ MateriaSource::MateriaSource(void)
 MateriaSource::MateriaSource(const MateriaSource& input)
 {
 	std::cout << MAGENTA << "MateriaSource copy constructor" << RESET << std::endl;
-	// for (unsigned short i = 0; i < 4; i++)
-	// 	if (this->_learned_materias[i] != NULL)
-	// 		this->_learned_materias[i] = input._learned_materias[i]->clone();
-	*this = input;
+	for (unsigned short i = 0; i < 4; i++)
+		if (this->_learned_materias[i] != NULL)
+	 		this->_learned_materias[i] = input._learned_materias[i]->clone();
 	return;
 }
 
@@ -36,8 +35,9 @@ MateriaSource::~MateriaSource(void)
 	for (unsigned short i = 0; i < 4; i++)
 	{
 		std::cout << i << std::endl;
-		if (this->_learned_materias[i] != NULL)
+		if (this->_learned_materias[i])
 			delete this->_learned_materias[i];
+		std::cout << "done\n";
 	}
 	return;
 }
@@ -52,7 +52,7 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& input)
 			this->_learned_materias[i] = NULL;
 		}
 		if (input._learned_materias[i] != NULL)
-			this->_learned_materias[i] = input._learned_materias[i];
+			this->_learned_materias[i] = input._learned_materias[i]->clone();
 			// this->_learned_materias[i] = input._learned_materias[i]->clone();
 	}
 	return (*this);
@@ -85,7 +85,7 @@ AMateria*   MateriaSource::createMateria(std::string const & type)
         if (this->_learned_materias[i] && this->_learned_materias[i]->getType() == type)
 		{
 			std::cout << "ICI" << std::endl;
-            return (this->_learned_materias[i]);
+            return (this->_learned_materias[i]->clone());
 			// return (this->_learned_materias[i]->clone());
 		}
     }

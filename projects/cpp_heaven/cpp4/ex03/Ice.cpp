@@ -33,7 +33,7 @@ Ice::~Ice(void)
 
 Ice&		Ice::operator=(const Ice& input)
 {
-	AMateria::operator=(input);
+	this->_type = input._type;
 	return (*this);
 }
 

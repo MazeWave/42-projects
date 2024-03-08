@@ -12,28 +12,37 @@
 
 #include "Main.hpp"
 
-Character::Character(const std::string& name)
+Character::Character(const std::string& name) : _name(name)
 {
 	std::cout << MAGENTA << "Character name constructor : " << name << RESET << std::endl;
-	this->_name = name;
+	//this->_name = name;
 	// Initialize the inventory
 	for (unsigned short i = 0; i < 4; i++)
+	{
 		this->_inventory[i] = NULL;
+		std::cout << this->_name << " " <<this->_inventory[i] << std::endl;
+	}
 	return;
 }
 
-Character::Character(const Character& input)
+Character::Character(const Character& input) : _name(input._name)
 {
 	std::cout << MAGENTA << "Character copy constructor : " << input.getName() << RESET << std::endl;
-	*this = input;
-	return;
+	for(int i = 0; i < 4; i++)
+		if (input._inventory[i])
+			this->_inventory[i] = input._inventory[i]->clone();
 }
 
 Character::~Character(void)
 {
 	std::cout << MAGENTA << "Character destructor " << this->getName() << RESET << std::endl;
-	for (unsigned short i = 0; i < 4; i++)
-		delete this->_inventory[i];
+	for (unsigned short i = 0; i < 4; i++){
+		std::cout << "i = " << i << std::endl;
+		std::cout << _inventory[i];	
+		if (this->_inventory[i])
+		{	
+			std::cout << "if ok\n";
+			delete this->_inventory[i];}}
 	return;
 }
 
@@ -42,8 +51,12 @@ Character&	Character::operator=(const Character& input)
 	this->_name = input.getName();
 	for (unsigned short i = 0; i < 4; i++)
 	{
-		if (input._inventory[i] != NULL)
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+		if (input._inventory[i])
 			this->_inventory[i] = input._inventory[i]->clone();
+		else
+			this->_inventory[i] = 0;
 	}
 	return (*this);
 }
@@ -94,6 +107,7 @@ void	Character::equip(AMateria* m)
 	{
 		if (this->_inventory[i] == NULL)
 		{
+			std::cout << "equip "<< i << std::endl;
 			this->_inventory[i] = m;
 			return;
 		}

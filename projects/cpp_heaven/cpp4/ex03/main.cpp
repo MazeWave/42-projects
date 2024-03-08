@@ -39,19 +39,19 @@ int		main(void)
 		IMateriaSource *src = new MateriaSource();
 
 		std::cout << GREEN << "test1" << RESET << std::endl;
-		Ice ice1 = Ice();
-		Ice ice2 = ice1;	// = overload test
+		Ice *ice1 = new Ice();
+		Ice ice2 = *ice1;	// = overload test
 
-		src->learnMateria(&ice1);
+		src->learnMateria(ice1);
 		src->learnMateria(new Cure());
-		src->learnMateria(&ice2);
+		src->learnMateria(ice2.clone());
 		src->learnMateria(new Cure());
 		src->learnMateria(new Cure());	//return error
 		src->learnMateria(new Cure());	//return error
 		src->learnMateria(new Cure());	//return error
 
 		std::cout << GREEN << "test2" << RESET << std::endl;
-		std::cout << "ice1 = " << ice1.getType() << std::endl;
+		std::cout << "ice1 = " << ice1->getType() << std::endl;
 		std::cout << "ice2 = " << ice2.getType() << std::endl;
 
 		Character me = Character("me");
@@ -76,6 +76,8 @@ int		main(void)
 
 		Character meCopy = Character(me);
 
+		std::cout << "HEEEEEEEEEEEEERRRRRRRRREEEEEEEEEEEEE\n";
+		me.use(3, *bob);
 		std::cout << GREEN << "test5" << RESET << std::endl;
 		meCopy.use(0, *bob);
 
@@ -83,14 +85,20 @@ int		main(void)
 		// Deep copy MateriaSource test
 		MateriaSource src1 = MateriaSource();
 		src1.learnMateria(src->createMateria("ice"));
-
+		
+		std::cout << "HEEEEEEEEEEEEERRRRRRRRREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\n";
+		me.use(3, *bob);
+		
 		std::cout << GREEN << "test7" << RESET << std::endl;
-		Character test = Character("test");
+		Character *test = new Character("test");
 		std::cout << GREEN << "test8" << RESET << std::endl;
-		test.equip(src1.createMateria("ice"));
+		test->equip(src1.createMateria("ice"));
 		std::cout << GREEN << "test9" << RESET << std::endl;
-		test.use(0, me);
+		//test.use(0, me);
 		std::cout << GREEN << "test10" << RESET << std::endl;
+			
+		std::cout << "HEEEEEEEEEEeeeeeeeeeeeeeeeeeeeeeeeeeeeEEERRRRRRRRREEEEEEEEEEEEE\n";
+		me.use(3, *bob);
 
 		delete bob;
 		std::cout << GREEN << "test11" << RESET << std::endl;
@@ -99,5 +107,6 @@ int		main(void)
 		std::cout << GREEN << "test13" << RESET << std::endl;
 
 	}
+
 	return (0);
 }
