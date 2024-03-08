@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:44:05 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/07 17:57:10 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:26:55 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 Ice::Ice(void) : AMateria("ice")
 {
-	std::cout << MAGENTA << "Ice default constructor" << RESET << std::endl;
+	// std::cout << MAGENTA << "Ice default constructor" << RESET << std::endl;
 	return;
 }
 
 Ice::Ice(const Ice& input) : AMateria(input.getType())
 {
-	std::cout << MAGENTA << "Ice copy constructor" << RESET << std::endl;
-	// *this = input;
+	// std::cout << MAGENTA << "Ice copy constructor" << RESET << std::endl;
 	return;
 }
 
 Ice::~Ice(void)
 {
-	std::cout << MAGENTA << "Ice destructor" << RESET << std::endl;
+	// std::cout << MAGENTA << "Ice destructor" << RESET << std::endl;
 	return;
 }
 

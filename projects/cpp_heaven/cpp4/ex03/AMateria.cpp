@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 19:40:47 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/07 17:59:40 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:26:19 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 AMateria::AMateria(void)
 {
-	std::cout << MAGENTA << "AMateria default constructor" << RESET << std::endl;
+	// std::cout << MAGENTA << "AMateria default constructor" << RESET << std::endl;
 	return;
 }
 
 AMateria::AMateria(const std::string& type)
 {
-	std::cout << MAGENTA << "AMateria constructor " << type << RESET << std::endl;
+	// std::cout << MAGENTA << "AMateria constructor " << type << RESET << std::endl;
 	this->_type = type;
 	return;
 }
 
 AMateria::~AMateria(void)
 {
-	std::cout << MAGENTA << "AMateria destructor " << getType() << RESET << std::endl;
+	// std::cout << MAGENTA << "AMateria destructor " << getType() << RESET << std::endl;
 	return;
 }
 
 AMateria::AMateria(const AMateria& input)
 {
-	std::cout << MAGENTA << "AMateria copy constructor " << input.getType() << RESET << std::endl;
+	// std::cout << MAGENTA << "AMateria copy constructor " << input.getType() << RESET << std::endl;
 	*this = input;
 	return;
 }

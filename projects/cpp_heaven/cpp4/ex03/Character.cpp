@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:03:41 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/07 17:08:09 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/08 20:22:52 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,15 @@
 
 Character::Character(const std::string& name) : _name(name)
 {
-	std::cout << MAGENTA << "Character name constructor : " << name << RESET << std::endl;
-	//this->_name = name;
-	// Initialize the inventory
+	// std::cout << MAGENTA << "Character name constructor : " << name << RESET << std::endl;
 	for (unsigned short i = 0; i < 4; i++)
-	{
 		this->_inventory[i] = NULL;
-		std::cout << this->_name << " " <<this->_inventory[i] << std::endl;
-	}
 	return;
 }
 
 Character::Character(const Character& input) : _name(input._name)
 {
-	std::cout << MAGENTA << "Character copy constructor : " << input.getName() << RESET << std::endl;
+	// std::cout << MAGENTA << "Character copy constructor : " << input.getName() << RESET << std::endl;
 	for(int i = 0; i < 4; i++)
 		if (input._inventory[i])
 			this->_inventory[i] = input._inventory[i]->clone();
@@ -35,14 +30,15 @@ Character::Character(const Character& input) : _name(input._name)
 
 Character::~Character(void)
 {
-	std::cout << MAGENTA << "Character destructor " << this->getName() << RESET << std::endl;
-	for (unsigned short i = 0; i < 4; i++){
-		std::cout << "i = " << i << std::endl;
-		std::cout << _inventory[i];	
-		if (this->_inventory[i])
+	// std::cout << MAGENTA << "Character destructor " << this->getName() << RESET << std::endl;
+	for (unsigned short i = 0; i < 4; i++)
+	{
+		if (this->_inventory[i] != NULL)
 		{	
-			std::cout << "if ok\n";
-			delete this->_inventory[i];}}
+			delete this->_inventory[i];
+			this->_inventory[i] = NULL;
+		}
+	}
 	return;
 }
 
@@ -76,10 +72,7 @@ void	Character::use(int idx, ICharacter& target)
 	else
 	{
 		if (this->_inventory[idx] != NULL)
-		{
 			this->_inventory[idx]->use(target);
-			std::cout << RESET << this->_name << " used " << this->_inventory[idx]->getType() << RESET << std::endl;
-		}
 		else
 			std::cout << YELLOW << "You have no Materia at this inventory slot." << RESET << std::endl;
 	}
@@ -93,9 +86,15 @@ void	Character::unequip(int idx)
 		std::cout << RED << "Error : out of band slot ! Use value between 0 and 3." << RESET << std::endl;
 		return;
 	}
+	else if (this->_inventory[idx] == NULL)
+	{
+		std::cout << YELLOW << "Nothing to unequip on this slot." << RESET << std::endl;
+		return;
+	}
 	else
 	{
 		std::cout << RESET << "Unequiped : " << this->_inventory[idx]->getType() << RESET << std::endl;
+		delete this->_inventory[idx];
 		this->_inventory[idx] = NULL;
 	}
 	return;
@@ -107,8 +106,7 @@ void	Character::equip(AMateria* m)
 	{
 		if (this->_inventory[i] == NULL)
 		{
-			std::cout << "equip "<< i << std::endl;
-			this->_inventory[i] = m;
+			this->_inventory[i] = m->clone();
 			return;
 		}
 	}
