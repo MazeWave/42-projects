@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 01:12:18 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/02/29 21:27:05 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/08 21:06:28 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ Cat::~Cat(void)
 Cat&	Cat::operator=(const Cat& input)
 {
 	this->setType(input.getType());
+	this->_brain = new Brain(*(input._brain));
 	return (*this);
 }
 
