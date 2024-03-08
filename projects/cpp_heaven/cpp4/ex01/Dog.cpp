@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 02:13:44 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/02/29 21:28:18 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/08 21:03:04 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ Dog::~Dog(void)
 Dog&	Dog::operator=(const Dog& input)
 {
 	this->setType(input.getType());
+	this->_brain = new Brain(*(input._brain));
 	return (*this);
 }
 
