@@ -6,7 +6,7 @@
 /*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/11 18:27:17 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/11 18:29:27 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,7 @@ int		main(void)
 	std::cout << "-------------" << RESET << std::endl;
 	std::cout << "Deep copy test" << RESET << std::endl;
 	Cat	*cat = new Cat();
-	std::cout << "Copy constructor" << RESET << std::endl;
 	const Cat	*cat2 = new Cat(*cat);	// Copy constructor
-	const Cat	*cat3 = new Cat();		// Default constructor
-	(void)		cat3;
-	std::cout << "Copy assignement" << RESET << std::endl;
-	cat3 = cat;						// Copy assignment
 	std::cout << RED << cat->getType() << RESET << std::endl;
 	std::cout << RED << cat2->getType() << RESET << std::endl;
 	delete cat;
