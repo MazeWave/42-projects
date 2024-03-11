@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 02:13:44 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/08 21:03:04 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:45:15 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ Dog::Dog(void)
 	this->_brain = new Brain();
 	return;
 }
-Dog::Dog(const Animal& input)
+Dog::Dog(const Dog& input) : Animal()
 {
 	std::cout << MAGENTA << "Dog copy constructor " << input.getType() << RESET << std::endl;
-	Animal::operator=(input);
-	this->setType("Dog");
+	this->operator=(input);
 	return;
 }
 

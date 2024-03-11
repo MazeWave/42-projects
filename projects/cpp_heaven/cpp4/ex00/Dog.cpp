@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 02:13:44 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/02/29 02:43:06 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:42:07 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Dog&	Dog::operator=(const Dog& input)
 	return (*this);
 }
 
-void	Dog::makeSound(void)
+void	Dog::makeSound(void) const
 {
 	std::cout << RESET << "GRRRRR WOOF WOOF 🐶" << RESET << std::endl;
 	return;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 01:12:18 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/03/08 21:02:58 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/11 18:13:32 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ Cat::Cat(void)
 	return;
 }
 
-Cat::Cat(const Animal& input)
+Cat::Cat(const Cat& input) : Animal()
 {
 	std::cout << MAGENTA << "Cat copy constructor " << input.getType() << RESET << std::endl;
-	Animal::operator=(input);
-	this->setType("Cat");
+	this->operator=(input);
 	return;
 }
 
@@ -37,6 +36,7 @@ Cat::~Cat(void)
 
 Cat&	Cat::operator=(const Cat& input)
 {
+	std::cout << CYAN << "Cat assignment operator" << RESET << std::endl;
 	this->setType(input.getType());
 	this->_brain = new Brain(*(input._brain));
 	return (*this);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 02:10:45 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/02/29 21:27:22 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:44:59 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class	Dog : public Animal
 
 	public:
 	Dog(void);
-	Dog(const Animal& input);
+	Dog(const Dog& input);
 	~Dog(void);
 
 	Dog&	operator=(const Dog& input);

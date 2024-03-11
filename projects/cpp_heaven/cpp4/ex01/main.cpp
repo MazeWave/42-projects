@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/02/29 22:46:48 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/11 18:27:17 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,40 @@
 int		main(void)
 {
 	Animal *animals[4];
+	std::cout << "-------------" << RESET << std::endl;
+	std::cout << "Creating dogs" << RESET << std::endl;
 	for (size_t i = 0; i < 2; i++)
 	{
 		std::cout << i << std::endl;
 		animals[i] = new Dog();
 	}
 	std::cout << "-------------" << RESET << std::endl;
+	std::cout << "Creating cats" << RESET << std::endl;
 	for (size_t i = 2; i < 4; i++)
 	{
 		std::cout << i << std::endl;
-		animals[i] = new Dog();
+		animals[i] = new Cat();
 	}
 	std::cout << "-------------" << RESET << std::endl;
+	std::cout << "Deleting" << RESET << std::endl;
 	for (size_t i = 0; i < 4; i++)
 	{
 		std::cout << i << std::endl;
 		delete animals[i];
 	}
+	std::cout << "-------------" << RESET << std::endl;
+	std::cout << "Deep copy test" << RESET << std::endl;
+	Cat	*cat = new Cat();
+	std::cout << "Copy constructor" << RESET << std::endl;
+	const Cat	*cat2 = new Cat(*cat);	// Copy constructor
+	const Cat	*cat3 = new Cat();		// Default constructor
+	(void)		cat3;
+	std::cout << "Copy assignement" << RESET << std::endl;
+	cat3 = cat;						// Copy assignment
+	std::cout << RED << cat->getType() << RESET << std::endl;
+	std::cout << RED << cat2->getType() << RESET << std::endl;
+	delete cat;
+	delete cat2;
 	std::cout << "-----END-----" << RESET << std::endl;
 	return (0);
 }

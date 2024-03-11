@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 01:12:16 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/02/29 21:26:57 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:27:07 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class	Cat : public Animal
 
 	public:
 	Cat(void);
-	Cat(const Animal& input);
+	Cat(const Cat& input);
 	~Cat(void);
 
 	Cat&	operator=(const Cat& input);

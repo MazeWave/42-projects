@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 19:05:25 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/02/29 21:24:11 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:01:32 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class	Brain
 {
 	public:
 	Brain(void);
-	Brain(const Brain& imput);
+	Brain(const Brain& input);
 	~Brain(void);
 
 	Brain&			operator=(const Brain& input);
