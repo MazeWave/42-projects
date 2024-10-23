@@ -1,70 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/10/23 15:17:56 by ldalmass         ###   ########.fr       */
+/*   Created: 2024/10/21 17:11:19 by ldalmass          #+#    #+#             */
+/*   Updated: 2024/10/23 21:06:24 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#ifndef  PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 /************* STANDARD LIBRARIES ***************/
 # pragma once
 # include <iostream>
 # include <string>
 # include <exception>
+# include <fstream>
+# include <cstdlib>
+
 # include "AForm.hpp"
 
 /******************* CLASSES ********************/
 
-class   Bureaucrat
+class   PresidentialPardonForm : public AForm
 {
 	private:
-	const std::string	_name;
-	int					_grade;
+	std::string	_target;
 
 	public:
-	Bureaucrat(void);
-	~Bureaucrat(void);
-	Bureaucrat(std::string name, int grade);
-	Bureaucrat(const Bureaucrat& input);
+	~PresidentialPardonForm(void);
+	PresidentialPardonForm(void);
+	PresidentialPardonForm(std::string target);
+	PresidentialPardonForm(const PresidentialPardonForm& input);
+	PresidentialPardonForm&	operator=(const PresidentialPardonForm& input);
 
-	Bureaucrat&	operator=(const Bureaucrat& input);
-
-	void		incrementGrade(void);
-	void		decrementGrade(void);
-
-	int			getGrade(void) const;
-	std::string	getName(void) const;
-
-	void		signForm(AForm& form);
-	void		executeForm(AForm const & form);
-
-	class		GradeTooHighException: public std::exception
-	{
-		public:
-		virtual const char* what() const throw()
-		{
-			return ("Bureaucrat: Grade is too high, you can't have a grade higher than 1");
-		};
-	};
-	class		GradeTooLowException: public std::exception
-	{
-		public:
-		virtual const char* what() const throw()
-		{
-			return ("Bureaucrat: Grade is too low, you can't have a grade lower than 150");
-		};
-	};
+	void	execute(Bureaucrat const &executor) const;
 };
 
 /****************** FUNCTIONS *******************/
-std::ostream&	operator<<(std::ostream &print, Bureaucrat const &bureaucrat);
 
 /******************* COLORS *********************/
 # define RESET		"\033[0m"

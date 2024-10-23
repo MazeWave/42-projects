@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:48:24 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/10/21 17:57:20 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:24:13 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ class   AForm
 	std::string		getName(void) const;
 
 	void			beSigned(Bureaucrat& bureau);
-	virtual void	do_things(Bureaucrat const &bureau) const = 0;
+	virtual void	execute(Bureaucrat const &executor) const = 0;
 
 	class		GradeTooHighException: public std::exception
 	{
 		public:
 		virtual const char* what() const throw()
 		{
-			return ("AForm: Grade is too high");
+			return ("Grade is too high");
 		};
 	};
 	class		GradeTooLowException: public std::exception
@@ -59,7 +59,15 @@ class   AForm
 		public:
 		virtual const char* what() const throw()
 		{
-			return ("AForm: Grade is too low");
+			return ("Grade is too low");
+		};
+	};
+	class		UnsignedFormException: public std::exception
+	{
+		public:
+		virtual const char* what() const throw()
+		{
+			return ("The form is not Signed !");
 		};
 	};
 };

@@ -6,7 +6,7 @@
 #    By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/15 17:57:18 by ldalmass          #+#    #+#              #
-#    Updated: 2024/10/21 17:54:31 by ldalmass         ###   ########.fr        #
+#    Updated: 2024/10/23 21:09:23 by ldalmass         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ NAME		= Bureaucrat
 SRCS		=	main.cpp\
 				Bureaucrat.cpp \
 				AForm.cpp \
-				ShrubberyCreationForm.cpp
+				ShrubberyCreationForm.cpp \
+				RobotomyRequestForm.cpp \
+				PresidentialPardonForm.cpp
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -rf
 

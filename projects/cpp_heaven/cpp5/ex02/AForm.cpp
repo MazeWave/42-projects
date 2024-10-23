@@ -6,11 +6,11 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:48:35 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/10/21 17:54:13 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/10/21 21:01:33 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 AForm::~AForm(void)

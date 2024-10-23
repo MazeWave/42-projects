@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:11:19 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/10/21 17:57:42 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:23:37 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <iostream>
 # include <string>
 # include <exception>
-# include <ostream>
+# include <fstream>
 
 # include "AForm.hpp"
 
@@ -27,7 +27,7 @@
 class   ShrubberyCreationForm : public AForm
 {
 	private:
-	const std::string	_target;
+	std::string	_target;
 
 	public:
 	~ShrubberyCreationForm(void);
@@ -36,7 +36,7 @@ class   ShrubberyCreationForm : public AForm
 	ShrubberyCreationForm(const ShrubberyCreationForm& input);
 	ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& input);
 
-	void	do_things(Bureaucrat const &bureau) const;
+	void	execute(Bureaucrat const &executor) const;
 };
 
 /****************** FUNCTIONS *******************/

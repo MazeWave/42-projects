@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:18:40 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/10/21 17:10:37 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/10/23 21:17:36 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << MAGENTA << "Bureaucrat default destructor called" << RESET << std::endl;
+	// std::cout << MAGENTA << "Bureaucrat default destructor called" << RESET << std::endl;
 	return ;
 }
 
 Bureaucrat::Bureaucrat(void) : _name("42"), _grade(42)
 {
-	std::cout << MAGENTA << "Bureaucrat default constructor called" << RESET << std::endl;
+	// std::cout << MAGENTA << "Bureaucrat default constructor called" << RESET << std::endl;
 	return ;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
-	std::cout << MAGENTA << "Bureaucrat constructor called" << RESET << std::endl;
+	// std::cout << MAGENTA << "Bureaucrat constructor called" << RESET << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	if(grade > 150)
@@ -38,14 +38,14 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 
 Bureaucrat::Bureaucrat(const Bureaucrat& input)
 {
-	std::cout << MAGENTA << "Bureaucrat copy constructor called" << RESET << std::endl;
+	// std::cout << MAGENTA << "Bureaucrat copy constructor called" << RESET << std::endl;
 	*this = input;
 	return ;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& input)
 {
-	std::cout << MAGENTA << "Bureaucrat assignment overload operator called" << RESET << std::endl;
+	// std::cout << MAGENTA << "Bureaucrat assignment overload operator called" << RESET << std::endl;
 	this->_grade = input.getGrade();
 	return (*this);
 }
@@ -76,7 +76,7 @@ std::string	Bureaucrat::getName(void) const
 	return (this->_name);
 }
 
-void	Bureaucrat::signForm(Form& form)
+void	Bureaucrat::signForm(AForm& form)
 {
 	try
 	{
@@ -86,6 +86,20 @@ void	Bureaucrat::signForm(Form& form)
 	catch (std::exception &error)
 	{
 		std::cout << RED << this->getName() << " couldn't sign " << form.getName() << " because " << error.what() << RESET << std::endl;
+	}
+	return ;
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << GREEN << this->getName() << " executed " << form.getName() << RESET << std::endl;
+	}
+	catch (std::exception &error)
+	{
+		std::cout << RED << this->getName() << " couldn't execute " << form.getName() << " because " << error.what() << RESET << std::endl;
 	}
 	return ;
 }
