@@ -3,15 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:11:19 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/10/23 17:23:37 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:30:52 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef  SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
 
 /************* STANDARD LIBRARIES ***************/
 # pragma once
@@ -51,5 +48,3 @@ class   ShrubberyCreationForm : public AForm
 # define YELLOW		"\033[33m"
 # define BLACK		"\033[30m"
 # define WHITE		"\033[37m"
-
-#endif

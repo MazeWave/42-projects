@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:11:30 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/10/23 21:01:39 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/13 16:37:36 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& input) : AFo
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& input)
 {
-	*this = input;
+	if (this != &input)
+		this->_target = input._target;
 	return (*this);
 }
 

@@ -3,15 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:48:24 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/10/23 17:24:13 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:02:35 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef  AFORM_HPP
-# define AFORM_HPP
 
 /************* STANDARD LIBRARIES ***************/
 # pragma once
@@ -85,5 +82,3 @@ std::ostream&	operator<<(std::ostream &print, AForm const &form);
 # define YELLOW		"\033[33m"
 # define BLACK		"\033[30m"
 # define WHITE		"\033[37m"
-
-#endif

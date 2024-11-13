@@ -3,15 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:48:24 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/10/21 16:02:29 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:49:14 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef  FORM_HPP
-# define FORM_HPP
 
 /************* STANDARD LIBRARIES ***************/
 # pragma once
@@ -77,4 +74,3 @@ std::ostream&	operator<<(std::ostream &print, Form const &form);
 # define BLACK		"\033[30m"
 # define WHITE		"\033[37m"
 
-#endif

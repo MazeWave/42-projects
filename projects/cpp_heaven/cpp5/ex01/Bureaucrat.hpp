@@ -3,15 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/10/17 14:15:16 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/13 15:50:02 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
 
 /************* STANDARD LIBRARIES ***************/
 # pragma once
@@ -75,5 +72,3 @@ std::ostream&	operator<<(std::ostream &print, Bureaucrat const &bureaucrat);
 # define YELLOW		"\033[33m"
 # define BLACK		"\033[30m"
 # define WHITE		"\033[37m"
-
-#endif

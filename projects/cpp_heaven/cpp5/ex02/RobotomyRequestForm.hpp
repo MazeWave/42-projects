@@ -3,15 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:11:19 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/10/23 20:25:53 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:13:02 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef  ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
 
 /************* STANDARD LIBRARIES ***************/
 # pragma once
@@ -52,5 +49,3 @@ class   RobotomyRequestForm : public AForm
 # define YELLOW		"\033[33m"
 # define BLACK		"\033[30m"
 # define WHITE		"\033[37m"
-
-#endif
