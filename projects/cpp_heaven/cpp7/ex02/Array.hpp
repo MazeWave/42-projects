@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/13 18:42:11 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/15 20:35:10 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,72 @@ class	Array
 	T*				_array;
 
 	public:
-	~Array(void);
-	Array(void);
-	Array(unsigned int len);
+	~Array(void)
+	{
+		if (this->_len == 0)
+			return ;
+		else
+			delete[] this->_array;
+		return ;
+	}
+	Array(void) : _len(static_cast<unsigned int>(0)), _array(NULL) { return; }
+	Array(unsigned int len)
+	{
+		this->_len = len;
+		this->_array = new T[len];
+		for (unsigned int i = 0; i < this->_len; i++)
+			this->_array[i] = NULL;
+		return ;
+	}
+	Array(Array<T> const & input)
+	{
+		if (input._len == 0)
+			this = Array<T>();
+		else
+		{
+			this->_len = input._len;
+			this->_array = new T[this->_len];
+			for (unsigned int i = 0; i < this->_len; i++)
+				this->_array[i] = input._array[i];
+		}
+	}
+	Array&	operator=(Array<T> const & input)
+	{
+		if (this._len == 0)
+			return (Array<T>());
+		this->_len = input._len;
+		this->_array = new T[this->_len];
+		for (unsigned int i = 0; i < this->_len; i++)
+			this->_array[i] = input._array[i];
+		return (*this);
+	}
 
-	Array(const Array & input);
-	Array&	operator=(const Array & input);
+	unsigned int	Size(void) { return (this->_len); }
 
-	unsigned int	Size(void);
+	T&	operator[](unsigned int pos)
+	{
+		if (pos >= this->_len)
+			throw OutOfBandExcepetion();
+		return (this->_array[pos]);
+	}
+	
+	T const &	operator[](unsigned int pos) const	// Alt for constant _array
+	{
+		if (pos >= this->_len)
+			throw OutOfBandExcepetion();
+		return (this->_array[pos]);
+	}
 
 	class	OutOfBandExcepetion : public std::exception
 	{
 		const char*	what() const throw()
 		{
-			return ("\033[31mOut of Band !\033[0m")
+			return ("\033[31mOut of Band !\033[0m");
 		}
 	};
 };
 
 /****************** FUNCTIONS *******************/
-template<typename T>
-void	print_data(T & data) {std::cout << data << std::endl; return;}
 
 /******************* COLORS *********************/
 # define RESET		"\033[0m"

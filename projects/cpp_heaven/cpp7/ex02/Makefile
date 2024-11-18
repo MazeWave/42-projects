@@ -6,13 +6,13 @@
 #    By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/15 17:57:18 by ldalmass          #+#    #+#              #
-#    Updated: 2024/11/12 21:22:10 by ldalmass         ###   ########.fr        #
+#    Updated: 2024/11/15 19:47:30 by ldalmass         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 COMPILER	= c++
 FLAGS		= -Wall -Wextra -Werror -std=c++98
-NAME		= iter
+NAME		= Array
 SRCS		=	main.cpp
 OBJS		= $(SRCS:.cpp=.o)
 RM			= rm -rf
