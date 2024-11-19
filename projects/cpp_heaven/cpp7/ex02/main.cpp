@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/16 14:55:18 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:10:40 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,96 @@
 int		main(void)
 {
 	// Int array
-	Array<int>	test1(42);
-	for (unsigned short i = 0; i<test1.Size(); i++)
-		test1[i] = i + 1;
-	for (unsigned short i = 0; i<test1.Size(); i++)
+	Array<int>	ints(42);
+	for (unsigned short i = 0; i < ints.Size(); i++)	// Plot array
+		ints[i] = i + 1;
+	for (unsigned short i = 0; i < ints.Size(); i++)	// Print array
 	{
-		if (i == test1.Size() - 1)
-			std::cout << test1[i] << std::endl;
+		if (i == ints.Size() - 1)
+			std::cout << ints[i] << std::endl;
 		else
-			std::cout << test1[i] << ", ";
+			std::cout << ints[i] << ", ";
 	}
 
-	// 1 sized null array
-	Array<void>	nulled(1);
-	std::cout << nulled[0] << std::endl;
-
-	// 4 sized null array
-	Array<void>	nulleded(4);
-	for (unsigned short i = 0; i<test1.Size(); i++)
-		std::cout << nulleded[i] << std::endl;
-
 	// std::string array
-	Array<std::string>	test2(2);
-	test2[0] = static_cast<const std::string>("Hello ");
-	test2[1] = static_cast<const std::string>("World !");
+	Array<std::string>	strings(2);
+	strings[0] = static_cast<std::string>("Hello ");
+	strings[1] = static_cast<std::string>("World !");
+	std::cout << strings[0] << strings[1] << std::endl;
+	strings[1] = static_cast<std::string>("Friend !");
+	std::cout << strings[0] << strings[1] << std::endl;
 
-	// const std::string array
-	// Array<const std::string>	test3(test2);
+	// 4 sized unploted array
+	Array<int>	unploted(4);
+	for (unsigned short i = 0; i < unploted.Size(); i++)
+		std::cout << unploted[i] << std::endl;
+
+	// Int NULL array
+	Array<int>	nulled(0);
 
 	try
 	{
-		test1[42] = -1;
-		std::cout << test1[42] << std::endl;
-		test2[1] = static_cast<const std::string>("Friend !");
+		// std::cout << nulled[0] << std::endl;
+		// ints[42] = -1;
+		// std::cout << ints[42] << std::endl;
 	}
 	catch (std::exception &error) { std::cout << error.what() << std::endl; }
 	return (0);
 }
+
+
+/*PROVIDED MAIN*/
+// #include <iostream>
+// #include <cstdlib>
+
+// #define MAX_VAL 750
+
+// int main(int, char**)
+// {
+//     Array<int> numbers(MAX_VAL);
+//     int* mirror = new int[MAX_VAL];
+//     srand(time(NULL));
+//     for (int i = 0; i < MAX_VAL; i++)
+//     {
+//         const int value = rand();
+//         numbers[i] = value;
+//         mirror[i] = value;
+//     }
+//     //SCOPE
+//     {
+//         Array<int> tmp = numbers;
+//         Array<int> test(tmp);
+//     }
+
+//     for (int i = 0; i < MAX_VAL; i++)
+//     {
+//         if (mirror[i] != numbers[i])
+//         {
+//             std::cerr << "didn't save the same value!!" << std::endl;
+//             return 1;
+//         }
+//     }
+//     try
+//     {
+//         numbers[-2] = 0;
+//     }
+//     catch(const std::exception& e)
+//     {
+//         std::cerr << e.what() << '\n';
+//     }
+//     try
+//     {
+//         numbers[MAX_VAL] = 0;
+//     }
+//     catch(const std::exception& e)
+//     {
+//         std::cerr << e.what() << '\n';
+//     }
+
+//     for (int i = 0; i < MAX_VAL; i++)
+//     {
+//         numbers[i] = rand();
+//     }
+//     delete [] mirror;//
+//     return 0;
+// }
