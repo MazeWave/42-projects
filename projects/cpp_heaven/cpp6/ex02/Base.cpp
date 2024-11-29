@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:18:40 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/08 19:22:21 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/19 18:28:37 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,19 @@ void	Base::indentify(Base& p)
 	{
 		try
 		{
-			dynamic_cast<A&>(p);
+			(void)dynamic_cast<A&>(p);
 			return (std::cout << GREEN << "p:\t\tA" << RESET << std::endl, static_cast<void>(NULL));
 		}
 		catch ( std::exception& ) {  }
 		try
 		{
-			dynamic_cast<B&>(p);
+			(void)dynamic_cast<B&>(p);
 			return (std::cout << GREEN << "p:\t\tB" << RESET << std::endl, static_cast<void>(NULL));
 		}
 		catch ( std::exception& ) {  }
 		try
 		{
-			dynamic_cast<C&>(p);
+			(void)dynamic_cast<C&>(p);
 			return (std::cout << GREEN << "p:\t\tC" << RESET << std::endl, static_cast<void>(NULL));
 		}
 		catch ( std::exception& ) {  }
