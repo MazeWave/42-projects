@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:44:05 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/29 01:31:39 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/30 01:01:32 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	Span::longestSpan(void)
 
 	// Calculations
 	longest = sortedData[sortedData.size() -1] - sortedData[0];
-	std::cout << "Longest span : " << longest << std::endl;
+	std::cout << "✅⏫ Longest span : " << longest << std::endl;
 	return (longest);
 }
 
@@ -83,7 +83,7 @@ int	Span::shortestSpan(void)
 			shortest = current;
 	}
 
-	std::cout << "Shortest span : " << shortest << std::endl;
+	std::cout << "✅⏬ Shortest span : " << shortest << std::endl;
 	return (shortest);
 }
 

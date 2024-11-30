@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/29 01:28:48 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/30 00:59:40 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		main(void)
 {
 	
 	// Out of range test
-	std::cout << YELLOW << "Out of range tests : " << RESET << std::endl;
+	std::cout << YELLOW << "🕳️ Out of range tests : " << RESET << std::endl;
 	Span	oor(4);
 	Span	oor2(3);
 
@@ -34,23 +34,26 @@ int		main(void)
 	// Tests
 	try { oor.addNumber(1); }// should throw outOfRangeException
 	catch ( std::exception &error ) { std::cout << error.what() << std::endl; }
+	std::cout << "oor :" << std::endl;
 	oor.printNumbers();
 
-	// Prints
-
-
-	// Copy assignment test
-	std::cout << YELLOW << "Copy assignment tests : " << RESET << std::endl;
+	// Copy assignment / constructor test
+	std::cout << YELLOW << "📚 Copy assignment / constructor tests : " << RESET << std::endl;
+	std::cout << "oor2 :" << std::endl;
 	oor2.addNumber(0);
 	oor2.addNumber(0);
 	oor2.addNumber(0);
 	oor2.printNumbers();
 	try { oor2 = oor; }
 	catch ( std::exception &error ) { std::cout << error.what() << std::endl; }
+	std::cout << "oor2 (after copy assignation) :" << std::endl;
 	oor2.printNumbers();
+	Span	oor3(oor2);
+	std::cout << "oor3 (after copy constructor):" << std::endl;
+	oor3.printNumbers();
 
 	// Shortest / Longest Span test
-	std::cout << YELLOW << "Shortest / Longest Span tests : " << RESET << std::endl;
+	std::cout << YELLOW << "⏬ Shortest / ⏫ Longest Span tests : " << RESET << std::endl;
 	Span	a_span(5);
 	a_span.addNumber(-42);
 	a_span.addNumber(10);
@@ -79,15 +82,14 @@ int		main(void)
 	// Random and big ass span test
 	srand(time(NULL));	//generate a random seed based on time
 
-	std::cout << YELLOW << "Random and big ass span tests : " << RESET << std::endl;
+	std::cout << YELLOW << "🔀 Random and big ass span tests : " << RESET << std::endl;
 	Span				large(1000000);
 	std::vector<int>	range(large.getLen());
 	std::generate(range.begin(), range.end(), &get_random);
 	large.addRange(range.begin(), range.end());
-	// large.printNumbers();
-	std::cout << CYAN << "Processing Shortest Span..." << RESET << std::endl;
+	std::cout << CYAN << "⏬ Processing Shortest Span..." << RESET << std::endl;
 	large.shortestSpan();
-	std::cout << CYAN << "Processing Longest Span..." << RESET << std::endl;
+	std::cout << CYAN << "⏫ Processing Longest Span..." << RESET << std::endl;
 	large.longestSpan();
 
 	// Provided main:

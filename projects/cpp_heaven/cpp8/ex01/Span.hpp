@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/29 00:06:17 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/30 01:00:28 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ class	outOfRangeException : public std::exception
 {
 	virtual const char*	what() const	throw()
 	{
-		return ("\033[31mNumber out of range !\033[0m");
+		return ("\033[31m❌ Number out of range !\033[0m");
 	}
 };
 
@@ -62,7 +62,7 @@ class	cannotFindShortestSpan : public std::exception
 {
 	virtual const char*	what() const	throw()
 	{
-		return ("\033[31mCan not find the shortest span in the container !\033[0m");
+		return ("\033[31m❌ Can not find the shortest span in the container !\033[0m");
 	}
 };
 
@@ -70,7 +70,7 @@ class	cannotFindLongestSpan : public std::exception
 {
 	virtual const char*	what() const	throw()
 	{
-		return ("\033[31mCan not find the longest span in the container !\033[0m");
+		return ("\033[31m❌ Can not find the longest span in the container !\033[0m");
 	}
 };
 

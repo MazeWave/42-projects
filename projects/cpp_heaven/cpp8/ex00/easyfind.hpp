@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/27 22:09:55 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:32:47 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <string>
 # include <exception>
 # include <limits>		// for std::numeric_limits<int>
-# include <map>			// for std::map
 # include <list>		// for std::list
 # include <vector>		// for std::vector
 # include <algorithm>	// for rand() / srand()
@@ -27,7 +26,7 @@ class	numberNotFoundException : public std::exception
 {
 	virtual const char*	what() const	throw()
 	{
-		return ("\033[31mNumber not found in the container !\033[0m");
+		return ("\033[31m❌ Number not found in the container !\033[0m");
 	}
 };
 
