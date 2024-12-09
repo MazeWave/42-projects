@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/30 17:49:25 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:42:25 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <algorithm>	// for rand() / srand() / std::generate()
 
 # include <stack>		// for std::stack
+# include <list>		// for std::list
+# include <vector>		// for std::vector
 
 /******************* CLASSES ********************/
 template <typename T>
@@ -28,7 +30,7 @@ class   MutantStack : public std::stack<T>
 	public:
 	~MutantStack() {};
 	MutantStack() : std::stack<T>() {};
-	MutantStack(const &input) : std::stack<T>(const &input) {};
+	MutantStack(const MutantStack &input) : std::stack<T>(input) {};
 	MutantStack	&operator=(const MutantStack &input)
 	{
 		if (*this != input)
@@ -36,27 +38,32 @@ class   MutantStack : public std::stack<T>
 		return (*this);
 	}
 
-	
-};
+	// Defining our iterators
+	// container_type::iterator reveal other hidden functions in the container, like iterators.
+	typedef typename	std::stack<T>::container_type::iterator			iterator;
+	typedef typename	std::stack<T>::container_type::const_iterator	const_iterator;
 
-class	outOfRangeException : public std::exception
-{
-	virtual const char*	what() const	throw()
-	{
-		return ("\033[31m❌ Number out of range !\033[0m");
-	}
+	iterator		begin() { return (std::stack<T>::c.begin()); };
+	iterator		end() { return (std::stack<T>::c.end()); };
+	const_iterator	begin() const { return (std::stack<T>::c.begin()); };
+	const_iterator	end() const { return (std::stack<T>::c.end()); };
 };
 
 /****************** FUNCTIONS *******************/
-// template <typename T>
-// int	easyfind(T &container, int to_find)
-// {
-// 	typename T::iterator	iter = std::find(container.begin(), container.end(), to_find);
-// 	if (iter == container.end())
-// 		throw numberNotFoundException();
-// 	else
-// 		return (*iter);
-// };
+template <typename T>
+void	print_container(const T &container)
+{
+	typename T::const_iterator	it = container.begin();
+	typename T::const_iterator	ite = container.end();
+
+	while (it != ite)
+	{
+		std::cout << *it << " ";
+		++it;
+	}
+	std::cout << std::endl;
+	return ;
+};
 
 /******************* COLORS *********************/
 # define RESET		"\033[0m"
