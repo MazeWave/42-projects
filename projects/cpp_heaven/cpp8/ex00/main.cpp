@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/30 00:45:27 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:46:13 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	get_random(void)
 {
-	return (rand() - std::numeric_limits<int>::max());
+	return (rand() - std::numeric_limits<int>::max() / 2 );
 }
 
 int		main(void)
