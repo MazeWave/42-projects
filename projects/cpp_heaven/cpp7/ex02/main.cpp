@@ -6,7 +6,7 @@
 /*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/10 16:44:46 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:43:22 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int		main(void)
 	// 	i == big.size() - 1 ? std::cout << big[i] << std::endl : std::cout << big[i] << ", ";
 
 	return (0);
+
+	Array<const int>	constant(4);
 }
 
 

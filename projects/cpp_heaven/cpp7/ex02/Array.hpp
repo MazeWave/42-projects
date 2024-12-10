@@ -6,7 +6,7 @@
 /*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/10 16:43:28 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:44:41 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,10 @@ class	Array
 			this->_array[i] = T();	// Use default type T provided
 		return ;
 	}
-	Array(Array<T> const & input) : _len(input._len), _array(input._len > 0 ? new T[input._len] = T() : T())
+	Array(Array<T> const & input) : _len(input._len), _array(input._len > 0 ? new T[input._len] : T())
 	{
 		for (unsigned int i = 0; i < _len; i++)
-		{
 			_array[i] = input._array[i];
-		}
 	}
 
 	unsigned int	size(void) { return (this->_len); }
