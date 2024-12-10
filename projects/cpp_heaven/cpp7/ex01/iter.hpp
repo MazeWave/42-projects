@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/12 21:25:11 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:11:55 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	iter(T* array, unsigned long len, void (&foo)(T &))
 
 /****************** FUNCTIONS *******************/
 template<typename T>
-void	print_data(T & data) {std::cout << data << std::endl; return;}
+void	print_data(T & data) { std::cout << data << std::endl; return; }
 
 /******************* COLORS *********************/
 # define RESET		"\033[0m"
