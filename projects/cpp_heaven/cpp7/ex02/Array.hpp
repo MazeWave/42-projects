@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/10 19:44:41 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/11 00:55:21 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class	Array
 		return ;
 	}
 	Array(void) : _len(0), _array(NULL) { return; }
-	Array(unsigned int len)
+	Array(unsigned int len) : _len(len), _array(new T[len])
 	{
 		this->_len = len;
 		this->_array = new T[len];
@@ -53,7 +53,7 @@ class	Array
 
 	Array&	operator=(Array<T> const & input)
 	{
-		if (this->_len == 0)
+		if (this->_len > 0 && this->_array)
 			delete[] this->_array;
 		if (input._len == 0)
 			return (Array<T>());
@@ -64,7 +64,13 @@ class	Array
 
 		return (*this);
 	}
-	T&	operator[](unsigned int pos)
+	T&			operator[](unsigned int pos)
+	{
+		if (pos >= this->_len)
+			throw OutOfBandExcepetion();
+		return (this->_array[pos]);
+	}
+	const T&	operator[](unsigned int pos) const
 	{
 		if (pos >= this->_len)
 			throw OutOfBandExcepetion();
