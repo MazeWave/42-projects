@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/10 00:42:25 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:03:22 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class   MutantStack : public std::stack<T>
 	}
 
 	// Defining our iterators
-	// container_type::iterator reveal other hidden functions in the container, like iterators.
+	// container_type::iterator reveal other hidden functions in the underlying container, like iterators.
 	typedef typename	std::stack<T>::container_type::iterator			iterator;
 	typedef typename	std::stack<T>::container_type::const_iterator	const_iterator;
 

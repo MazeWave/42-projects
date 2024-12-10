@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/10 00:46:57 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:58:01 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,9 @@ int		main(void)
 	}
 
 	std::cout << GREEN << "📝 Compare them all !" << RESET << std::endl;
+
+	// MutantStack<int>	mm;
+	// mm.emplace();
 
 	return (0);
 }
