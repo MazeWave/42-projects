@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/12 18:50:55 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:06:26 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int		main(void)
 {
+	// Own tests :
+	std::cout << std::endl << YELLOW << "Own tests" << RESET << std::endl;
 	std::cout << GREEN << "Tests with (int)" << RESET << std::endl;
 	{
 		int	a = 42;
@@ -53,7 +55,7 @@ int		main(void)
 		std::cout << "a: " << a << std::endl;
 		std::cout << "b: " << b << std::endl;
 	}
-	std::cout << std::endl << GREEN << "Tests with (std::string)" << RESET << std::endl;
+	std::cout << std::endl << GREEN << "Tests with (std::string) (complex type)" << RESET << std::endl;
 	{
 		std::string	a = "tetsetest";
 		std::string	b = "tetsetestZ";
@@ -66,5 +68,24 @@ int		main(void)
 		std::cout << "a: " << a << std::endl;
 		std::cout << "b: " << b << std::endl;
 	}
+
+	// Provided test from the subject :
+	std::cout << std::endl << YELLOW << "Provided test from the subject" << RESET << std::endl;
+	{
+		int a = 2;
+		int b = 3;
+		::swap( a, b );
+		std::cout << "a = " << a << ", b = " << b << std::endl;
+		std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+		std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+		std::string c = "chaine1";
+		std::string d = "chaine2";
+		::swap(c, d);
+		std::cout << "c = " << c << ", d = " << d << std::endl;
+		std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+		std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+		return 0;
+	}
+
 	return (0);
 }
