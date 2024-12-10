@@ -6,7 +6,7 @@
 /*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/19 17:10:07 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:43:28 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class	Array
 			delete[] this->_array;
 		return ;
 	}
-	Array(void) : _len(static_cast<unsigned int>(0)), _array(NULL) { return; }
+	Array(void) : _len(0), _array(NULL) { return; }
 	Array(unsigned int len)
 	{
 		this->_len = len;
@@ -43,7 +43,7 @@ class	Array
 			this->_array[i] = T();	// Use default type T provided
 		return ;
 	}
-	Array(Array<T> const & input) : _len(input._len), _array(input._len > 0 ? new T[input._len] : T())
+	Array(Array<T> const & input) : _len(input._len), _array(input._len > 0 ? new T[input._len] = T() : T())
 	{
 		for (unsigned int i = 0; i < _len; i++)
 		{
@@ -51,7 +51,7 @@ class	Array
 		}
 	}
 
-	unsigned int	Size(void) { return (this->_len); }
+	unsigned int	size(void) { return (this->_len); }
 
 	Array&	operator=(Array<T> const & input)
 	{

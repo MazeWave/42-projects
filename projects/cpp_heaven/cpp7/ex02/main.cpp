@@ -6,7 +6,7 @@
 /*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/19 17:10:40 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:44:46 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,12 @@ int		main(void)
 {
 	// Int array
 	Array<int>	ints(42);
-	for (unsigned short i = 0; i < ints.Size(); i++)	// Plot array
+	for (unsigned short i = 0; i < ints.size(); i++)	// Plot array
 		ints[i] = i + 1;
-	for (unsigned short i = 0; i < ints.Size(); i++)	// Print array
-	{
-		if (i == ints.Size() - 1)
-			std::cout << ints[i] << std::endl;
-		else
-			std::cout << ints[i] << ", ";
-	}
+	for (unsigned short i = 0; i < ints.size(); i++)	// Print array
+		i == ints.size() - 1 ? std::cout << ints[i] << std::endl : std::cout << ints[i] << ", ";
 
-	// std::string array
+	// std::string array (complex type)
 	Array<std::string>	strings(2);
 	strings[0] = static_cast<std::string>("Hello ");
 	strings[1] = static_cast<std::string>("World !");
@@ -36,7 +31,7 @@ int		main(void)
 
 	// 4 sized unploted array
 	Array<int>	unploted(4);
-	for (unsigned short i = 0; i < unploted.Size(); i++)
+	for (unsigned short i = 0; i < unploted.size(); i++)
 		std::cout << unploted[i] << std::endl;
 
 	// Int NULL array
@@ -47,8 +42,17 @@ int		main(void)
 		// std::cout << nulled[0] << std::endl;
 		// ints[42] = -1;
 		// std::cout << ints[42] << std::endl;
+		// std::cout << ints[-1] << std::endl;	// Will yse the unsigned int max value (underflow)
 	}
 	catch (std::exception &error) { std::cout << error.what() << std::endl; }
+
+	// Very big array
+	// Array<int>	big(10000);
+	// for (unsigned int i = 0; i < big.size(); i++)		// Plot array
+	// 	big[i] = i + 1;
+	// for (unsigned short i = 0; i < big.size(); i++)	// Print array
+	// 	i == big.size() - 1 ? std::cout << big[i] << std::endl : std::cout << big[i] << ", ";
+
 	return (0);
 }
 
