@@ -6,7 +6,7 @@
 /*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/10 16:11:55 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:29:54 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 
 template<typename T>
 void	iter(T* array, unsigned long len, void (&foo)(T &))
+{
+	for (unsigned long i = 0; i < len; i++)
+		foo(array[i]);
+}
+
+template<typename T>
+void	iter(const T* array, unsigned long len, void (&foo)(const T &))
 {
 	for (unsigned long i = 0; i < len; i++)
 		foo(array[i]);
