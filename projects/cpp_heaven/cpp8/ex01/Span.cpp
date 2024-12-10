@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 14:44:05 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/30 03:36:48 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:30:38 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ Span& Span::operator=(const Span& input)
 int	Span::longestSpan(void)
 {
 	unsigned int	longest = 0;
-	// unsigned int	current;
 	
 	// Initials tests
 	if (this->_data.size() <= 1)
@@ -56,7 +55,7 @@ int	Span::longestSpan(void)
 	std::sort(sortedData.begin(), sortedData.end());
 
 	// Calculations
-	longest = sortedData[sortedData.size() -1] - sortedData[0];
+	longest = sortedData[sortedData.size() - 1] - sortedData[0];
 	std::cout << "✅⏫ Longest span : " << longest << std::endl;
 	return (longest);
 }
@@ -96,24 +95,6 @@ void	Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator
 	this->_data.insert(this->_data.end(), begin, end);
 
 	return ;
-}
-
-unsigned int	Span::dist(int a, int b)
-{
-	unsigned int	distance = std::numeric_limits<unsigned int>::max();
-
-	int	max = a > b ? a : b;
-	int min = a < b ? a : b;
-
-	if (DEBUG != 0)
-	{
-		std::cout << CYAN << "max = " << max << RESET << std::endl;
-		std::cout << CYAN << "min = " << min << RESET << std::endl;
-		std::cout << MAGENTA << "Distance between " << a << " and " << b << RESET << " : " << distance << std::endl;
-	}
-
-	distance = abs(max - min);
-	return (distance);
 }
 
 void	Span::printNumbers(void)

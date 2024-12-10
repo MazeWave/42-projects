@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/11/30 01:00:28 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:26:05 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,6 @@ class	cannotFindLongestSpan : public std::exception
 };
 
 /****************** FUNCTIONS *******************/
-// template <typename T>
-// int	easyfind(T &container, int to_find)
-// {
-// 	typename T::iterator	iter = std::find(container.begin(), container.end(), to_find);
-// 	if (iter == container.end())
-// 		throw numberNotFoundException();
-// 	else
-// 		return (*iter);
-// };
 
 /******************* COLORS *********************/
 # define RESET		"\033[0m"

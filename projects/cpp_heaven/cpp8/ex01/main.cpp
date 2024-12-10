@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/10 00:46:22 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:38:26 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int		main(void)
 {
 	
 	// Out of range test
-	std::cout << YELLOW << "🕳️ Out of range tests : " << RESET << std::endl;
+	std::cout << std::endl << YELLOW << "🕳️ Out of range tests : " << RESET << std::endl;
 	Span	oor(4);
 	Span	oor2(3);
+	Span	oor3(oor2);
 
 	// Plots oor
 	oor.addNumber(1);
@@ -32,13 +33,13 @@ int		main(void)
 	oor.addNumber(4);
 
 	// Tests
-	try { oor.addNumber(1); }// should throw outOfRangeException
+	try { oor.addNumber(1); }	// should throw outOfRangeException
 	catch ( std::exception &error ) { std::cout << error.what() << std::endl; }
 	std::cout << "oor :" << std::endl;
 	oor.printNumbers();
 
 	// Copy assignment / constructor test
-	std::cout << YELLOW << "📚 Copy assignment / constructor tests : " << RESET << std::endl;
+	std::cout << std::endl << YELLOW << "📚 Copy assignment / constructor tests : " << RESET << std::endl;
 	std::cout << "oor2 :" << std::endl;
 	oor2.addNumber(0);
 	oor2.addNumber(0);
@@ -48,12 +49,11 @@ int		main(void)
 	catch ( std::exception &error ) { std::cout << error.what() << std::endl; }
 	std::cout << "oor2 (after copy assignation) :" << std::endl;
 	oor2.printNumbers();
-	Span	oor3(oor2);
 	std::cout << "oor3 (after copy constructor):" << std::endl;
 	oor3.printNumbers();
 
 	// Shortest / Longest Span test
-	std::cout << YELLOW << "⏬ Shortest / ⏫ Longest Span tests : " << RESET << std::endl;
+	std::cout << std::endl << YELLOW << "⏬ Shortest / ⏫ Longest Span tests : " << RESET << std::endl;
 	Span	a_span(5);
 	a_span.addNumber(-42);
 	a_span.addNumber(10);
@@ -64,6 +64,17 @@ int		main(void)
 	a_span.shortestSpan();
 	a_span.longestSpan();
 
+	Span	same_span(4);
+	same_span.addNumber(1);
+	same_span.addNumber(2);
+	same_span.addNumber(1);
+	same_span.addNumber(2);
+	same_span.printNumbers();
+	same_span.shortestSpan();
+	same_span.longestSpan();
+
+	// Throw test
+	std::cout << std::endl << YELLOW << "🗑️ Throw tests : " << RESET << std::endl;
 	Span	lil_span(1);
 	lil_span.addNumber(1);
 	try { lil_span.shortestSpan(); }
@@ -71,18 +82,10 @@ int		main(void)
 	try { lil_span.longestSpan(); }
 	catch ( std::exception &error ) { std::cout << error.what() << std::endl; }
 
-	Span	same_span(4);
-	same_span.addNumber(1);
-	same_span.addNumber(2);
-	same_span.addNumber(1);
-	same_span.addNumber(2);
-	same_span.shortestSpan();
-	same_span.longestSpan();
-
 	// Random and big ass span test
 	srand(time(NULL));	//generate a random seed based on time
 
-	std::cout << YELLOW << "🔀 Random and big ass span tests : " << RESET << std::endl;
+	std::cout << std::endl << YELLOW << "🔀 Random and big ass span tests : " << RESET << std::endl;
 	Span				large(1000000);
 	std::vector<int>	range(large.getLen());
 	std::generate(range.begin(), range.end(), &get_random);
@@ -94,15 +97,15 @@ int		main(void)
 
 	// Provided main:
 
-	// std::cout << YELLOW << "Main from the subject : " << RESET << std::endl;
-	// Span sp = Span(5);
-	// sp.addNumber(6);
-	// sp.addNumber(3);
-	// sp.addNumber(17);
-	// sp.addNumber(9);
-	// sp.addNumber(11);
-	// std::cout << sp.shortestSpan() << std::endl;
-	// std::cout << sp.longestSpan() << std::endl;
+	std::cout << std::endl << YELLOW << "Main from the subject : " << RESET << std::endl;
+	Span sp = Span(5);
+	sp.addNumber(6);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
 	
 	return (0);
 }
