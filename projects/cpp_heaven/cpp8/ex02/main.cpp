@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/10 17:58:01 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/11 01:52:44 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,11 @@ int		main(void)
 		print_container(constructor_copy);
 		std::cout << GREEN << "Assignment overload MutantStack :" << RESET << std::endl;
 		print_container(assignment_copy);
+
+		// Test with a constant MutantStack
+		std::cout << GREEN << "Constant MutantStack :" << RESET << std::endl;
+		const MutantStack<int>	constant(mstack);
+		print_container(constant);
 	}
 
 	
