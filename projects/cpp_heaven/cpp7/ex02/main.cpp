@@ -6,7 +6,7 @@
 /*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/19 15:57:26 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/19 19:46:50 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ int		main(void)
 	// 	i == big.size() - 1 ? std::cout << big[i] << std::endl : std::cout << big[i] << ", ";
 
 
-	const Array<int>	constant(5);
-	// constant[3] = 42;
+	const Array<int>			constant(5);
+	// constant[3] = 42;	// Does not compile (normal)
+	const Array<std::string>	foo(5);
+	const Array<std::string>	bar(foo);
 	return (0);
 }
 
