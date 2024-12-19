@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/11 00:57:10 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:57:26 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ int		main(void)
 	// for (unsigned short i = 0; i < big.size(); i++)	// Print array
 	// 	i == big.size() - 1 ? std::cout << big[i] << std::endl : std::cout << big[i] << ", ";
 
-	return (0);
 
 	const Array<int>	constant(5);
-	
+	// constant[3] = 42;
+	return (0);
 }
 
 

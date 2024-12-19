@@ -6,7 +6,7 @@
 /*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/10 19:19:50 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:38:54 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ T const &	max(T const & a,T const & b)
 template< typename T>
 void	swap(T & a,T & b)
 {
-	T temp	= a;	// c saves a
+	T temp;
 
+	temp = a;	// c saves a
 	a = b;
 	b = temp;
 	return ;

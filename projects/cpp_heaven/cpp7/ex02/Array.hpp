@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/11 00:55:21 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:42:32 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ class	Array
 			throw OutOfBandExcepetion();
 		return (this->_array[pos]);
 	}
-	const T&	operator[](unsigned int pos) const
+	const T&	operator[](const unsigned int pos) const
 	{
 		if (pos >= this->_len)
 			throw OutOfBandExcepetion();

@@ -3,56 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/11 01:38:12 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:40:32 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 
-int		main(void)
+// int		main(void)
+// {
+// 	int			a[3] = {-42, 0, 42};
+// 	std::string	b[2] = {"Hello", "World!"};
+// 	const int	c[2] = {1, 2};
+
+// 	iter<int>(a, 3, print_data);
+// 	iter<std::string>(b, 2, print_data);
+// 	iter<const int>(c, 2, print_data);
+
+// 	return (0);
+// }
+
+class Awesome
 {
-	int			a[3] = {-42, 0, 42};
-	std::string	b[2] = {"Hello", "World!"};
-	const int	c[2] = {1, 2};
+  public:
+    Awesome( void ) : _n( 42 ) { return; }
+    int get( void ) const { return this->_n; }
+  private:
+    int _n;
+};
 
-	iter<int>(a, 3, print_data);
-	iter<std::string>(b, 2, print_data);
-	iter<const int>(c, 2, print_data);
-
-	return (0);
+std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
+{
+  o << rhs.get();
+  return o;
 }
 
-// class Awesome
-// {
-//   public:
-//     Awesome( void ) : _n( 42 ) { return; }
-//     int get( void ) const { return this->_n; }
-//   private:
-//     int _n;
-// };
+template< typename T >
+void print( T& x )
+{
+  std::cout << x << std::endl;
+  return;
+}
 
-// std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
-// {
-//   o << rhs.get();
-//   return o;
-// }
+int main() {
+  int tab[] = { 0, 1, 2, 3, 4 };
+  Awesome tab2[5];
 
-// template< typename T >
-// void print( T& x )
-// {
-//   std::cout << x << std::endl;
-//   return;
-// }
+  iter( tab, 5, print<const int> );
+  iter( tab2, 5, print<Awesome> );
 
-// int main() {
-//   int tab[] = { 0, 1, 2, 3, 4 };
-//   Awesome tab2[5];
-
-//   iter( tab, 5, print<const int> );
-//   iter( tab2, 5, print<Awesome> );
-
-//   return 0;
-// }
+  return 0;
+}
