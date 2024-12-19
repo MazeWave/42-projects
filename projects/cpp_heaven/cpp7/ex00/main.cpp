@@ -6,7 +6,7 @@
 /*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/10 19:23:08 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/19 19:51:06 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,15 @@ int		main(void)
 	}
 
 	// Provided test from the corretion :
-	std::cout << std::endl << YELLOW << "Provided test from the correction" << RESET << std::endl;
-	{
-		Awesome a(2), b(4);
+	// std::cout << std::endl << YELLOW << "Provided test from the correction" << RESET << std::endl;
+	// {
+	// 	Awesome a(2), b(4);
 
-		swap(a, b);
-		std::cout << a << " " << b << std::endl;
-		std::cout << max(a, b) << std::endl;
-		std::cout << min(a, b) << std::endl;
-	}
-
+	// 	swap(a, b);
+	// 	std::cout << a << " " << b << std::endl;
+	// 	std::cout << max(a, b) << std::endl;
+	// 	std::cout << min(a, b) << std::endl;
+	// }
 
 	return (0);
 }
