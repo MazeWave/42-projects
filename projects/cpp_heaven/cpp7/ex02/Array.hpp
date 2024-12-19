@@ -6,7 +6,7 @@
 /*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2024/12/19 19:42:30 by ldalmass         ###   ########.fr       */
+/*   Updated: 2024/12/19 20:00:29 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,21 @@ class	Array
 	T&			operator[](unsigned int pos)
 	{
 		if (pos >= this->_len)
-			throw OutOfBandExcepetion();
+			throw OutOfBoundExcepetion();
 		return (this->_array[pos]);
 	}
 	const T&	operator[](const unsigned int pos) const
 	{
 		if (pos >= this->_len)
-			throw OutOfBandExcepetion();
+			throw OutOfBoundExcepetion();
 		return (this->_array[pos]);
 	}
 
-	class	OutOfBandExcepetion : public std::exception
+	class	OutOfBoundExcepetion : public std::exception
 	{
 		virtual const char*	what() const throw()
 		{
-			return ("\033[31mOut of Band !\033[0m");
+			return ("\033[31mOut of Bound !\033[0m");
 		}
 	};
 };
