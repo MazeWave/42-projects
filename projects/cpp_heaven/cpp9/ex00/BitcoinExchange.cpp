@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:57:23 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/01/29 22:18:19 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/01/29 23:25:10 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ BitcoinExchange::BitcoinExchange(const char *path)
 	// Create the database exchange rate in our std::map this->_data
 	try { getDataBase(); }
 	catch (std::exception &error) { std::cout << error.what() << std::endl; return ; }
-	printData();
-	
 
 	// Check if the input file is open
 	if (!file.is_open())
@@ -34,10 +32,8 @@ BitcoinExchange::BitcoinExchange(const char *path)
 
 	// Check rate for each line of input file
 	std::getline(file, line);
-	printData();
 	while (std::getline(file, line))
 		getExchangeRate(line);
-	printData();
 	// std::cout << BLUE << readValue("date,exchange_rate") << std::endl;
 	file.close();
 	return ;
@@ -112,7 +108,6 @@ unsigned long	BitcoinExchange::readDate(const std::string date)
 
 	result = std::atol((str.substr(0,4) + str.substr(5,2) + str.substr(8,2)).c_str());
 	// result = std::strtol(str.replace(str.find('-'), 1, ""), NULL, 10);
-	std::cout << result << std::endl;
 	return (result);
 }
 
@@ -179,7 +174,7 @@ void	BitcoinExchange::getDataBase(void)
 	while (std::getline(file, line))
 	{
 		this->_data[readDate(line)] = readValue(line);
-		std::cout << line << std::endl;
+		// std::cout << line << std::endl;
 	}
 
 	file.close();
@@ -202,31 +197,30 @@ void	BitcoinExchange::printData(void)
 
 unsigned long	BitcoinExchange::findDateInDataBase(const unsigned long date)
 {
-	unsigned long	result;
+	unsigned long	result = 0;
 
 	std::map<unsigned long, double>::const_iterator	start = this->_data.begin();
 	std::map<unsigned long, double>::const_iterator	end = this->_data.end();
 
-	result = start->first;
 	while (start != end)
 	{
-		std::cout << YELLOW << result << " < " << date << RESET << std::endl;
-		std::cout << YELLOW << "Current date " << start->first << RESET << std::endl;
+		// std::cout << YELLOW << result << " < " << date << RESET << std::endl;
+		// std::cout << YELLOW << "Current date " << start->first << RESET << std::endl;
 		
-		++start;
-		if (result < date)
+		if (start->first > date)
 			break;
 		result = start->first;
+		++start;
 	}
 
-	std::cout << CYAN << "Nearest date : " << result << RESET << std::endl;
+	// std::cout << CYAN << "Nearest date : " << result << RESET << std::endl;
 
 	return (result);
 }
 
 double	BitcoinExchange::getRate(const unsigned long date)
 {
-	std::cout << GREEN << "DB Key : " << date << " | " << "DB Rate : " << this->_data[date] << RESET << std::endl;
+	// std::cout << GREEN << "DB Key : " << date << " | " << "DB Rate : " << this->_data[date] << RESET << std::endl;
 	return (this->_data[date]);
 }
 
@@ -241,6 +235,6 @@ void	BitcoinExchange::getExchangeRate(const std::string raw)
 	if (::trimLine(raw).size() < 10)
 		return ;
 	if (checkValue(value * rate) && checkValue(value) && checkValue(rate))
-		std::cout << ::trimLine(raw).substr(0, 10) << " => " << value << " => " << value * rate << std::endl;
+		std::cout << ::trimLine(raw).substr(0, 10) << " => " << value << " => " << std::setprecision(8) << value * rate << std::endl;
 	return ;
 }
