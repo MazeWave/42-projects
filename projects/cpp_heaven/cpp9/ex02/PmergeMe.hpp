@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/03 17:00:44 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:15:57 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,12 @@ class	PmergeMe
 
 	// PmergeMe&	operator=(const PmergeMe &input);
 
-	// void	VectorMergeInstertSort();
-	// void	DequeMergeInstertSort();
-
 	void	PopulateContainers(int argc, char **argv);
 
+	void	VectorMergeInstertSort(void);
+	// void	DequeMergeInstertSort();
 
-
-
+	// std::vector<unsigned long>	RecursiveSort(std::vector<unsigned long> input);
 };
 
 /****************** FUNCTIONS *******************/
@@ -77,9 +75,11 @@ void	PrintContainer(const T &container, const std::string message)
 		++start;
 	}
 	std::cout << "]" << std::endl;
-	std::cout << std::endl;
 	return ;
 }
+
+// template <typename T>
+// T&	RecursiveSort()
 
 /******************* COLORS *********************/
 # define RESET		"\033[0m"
