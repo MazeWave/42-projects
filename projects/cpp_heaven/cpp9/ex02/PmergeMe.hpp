@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/05 01:13:27 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 18:22:46 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 class	PmergeMe
 {
 	private:
-	PmergeMe(void);
 	std::vector<unsigned long>	_vdata;
 	std::deque<unsigned long>	_ddata;
 	/*
@@ -47,10 +46,11 @@ class	PmergeMe
 
 	public:
 	~PmergeMe(void);
+	PmergeMe(void);
 	PmergeMe(int argc, char **argv);
 	PmergeMe(const PmergeMe &input);
 
-	// PmergeMe&	operator=(const PmergeMe &input);
+	PmergeMe&	operator=(const PmergeMe &input);
 
 	void	PopulateContainers(int argc, char **argv);
 

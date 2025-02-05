@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:57:23 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/05 01:13:29 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 18:22:38 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,17 @@ PmergeMe::PmergeMe(const PmergeMe &input)
 	return ;
 }
 
-// PmergeMe&	PmergeMe::operator=(const PmergeMe &input)
-// {
-// 	// this->_data = input.getData();
-// 	return (*this);
-// }
+PmergeMe&	PmergeMe::operator=(const PmergeMe &input)
+{
+	if (this->_ddata != input._ddata || this->_vdata != input._vdata)
+	{
+		if (this->_ddata != input._ddata)
+			this->_ddata = input._ddata;
+		else
+			this->_vdata = input._vdata;
+	}
+	return (*this);
+}
 
 void	PmergeMe::PopulateContainers(int argc, char **argv)
 {
