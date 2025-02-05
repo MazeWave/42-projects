@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:57:23 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/01/29 23:25:10 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:48:33 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,14 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &input)
 	return ;
 }
 
-// BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange &input)
-// {
-// 	// this->_data = input.getData();
-// 	return (*this);
-// }
+BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange &input)
+{
+	if (this->_data != input._data)
+		this->_data = input._data;
+	return (*this);
+}
 
-std::string trimLine(const std::string str)
+std::string BitcoinExchange::trimLine(const std::string str)
 {
 	std::string::const_iterator start = str.begin();
 	std::string::const_iterator end = str.end();
@@ -59,6 +60,8 @@ std::string trimLine(const std::string str)
 	// Remove spaces at start
 	while (start != str.end() && std::isspace(*start))
 		++start;
+	if (start == end)
+		return ("");
 	// Remove spaces at end
 	do --end;
 	while (end != start && std::isspace(*end));
@@ -71,7 +74,7 @@ double			BitcoinExchange::readValue(const std::string value)
 	std::string	str;
 	double		result = -1.0;
 
-	str = ::trimLine(value);
+	str = trimLine(value);
 
 	if (str.size() <= 10)
 		return (-1.0);
@@ -101,7 +104,7 @@ double			BitcoinExchange::readValue(const std::string value)
 unsigned long	BitcoinExchange::readDate(const std::string date)
 {
 	unsigned long	result;
-	std::string		str = ::trimLine(date);
+	std::string		str = trimLine(date);
 
 	if (str.size() < 10)
 		return (-1);
@@ -124,7 +127,7 @@ bool	BitcoinExchange::checkValue(const double value)
 
 bool	BitcoinExchange::checkDate(const std::string date)
 {
-	std::string	str = ::trimLine(date);
+	std::string	str = trimLine(date);
 	// Check line's lenght and '-' presence
 	if (str.size() < 10)
 		return (false);
@@ -232,9 +235,9 @@ void	BitcoinExchange::getExchangeRate(const std::string raw)
 	double			value = readValue(raw);
 	double			rate = getRate(nearest_date);
 
-	if (::trimLine(raw).size() < 10)
+	if (trimLine(raw).size() < 10)
 		return ;
 	if (checkValue(value * rate) && checkValue(value) && checkValue(rate))
-		std::cout << ::trimLine(raw).substr(0, 10) << " => " << value << " => " << std::setprecision(8) << value * rate << std::endl;
+		std::cout << trimLine(raw).substr(0, 10) << " => " << value << " => " << std::setprecision(8) << value * rate << std::endl;
 	return ;
 }

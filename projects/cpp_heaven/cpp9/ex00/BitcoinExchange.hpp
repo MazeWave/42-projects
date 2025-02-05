@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/01/29 22:01:37 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:48:20 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,22 @@
 
 # include <map>			// for std::map
 
-# include <stack>		// for std::stack
-# include <list>		// for std::list
-# include <vector>		// for std::vector
 # include <cstdlib>
 
 /******************* CLASSES ********************/
 class	BitcoinExchange
 {
 	private:
-	BitcoinExchange(void)			{ return ; };
 	/* Database : (unsigned long -> date | double -> btc value) */
 	std::map<unsigned long, double>	_data;
 
 	public:
+	BitcoinExchange(void)			{ return ; };
 	~BitcoinExchange(void);
 	BitcoinExchange(const char *path);
 	BitcoinExchange(const BitcoinExchange &input);
 
-	// BitcoinExchange&	operator=(const BitcoinExchange &input);
+	BitcoinExchange&	operator=(const BitcoinExchange &input);
 
 	static std::string		trimLine(const std::string str);
 	static double			readValue(const std::string value);
