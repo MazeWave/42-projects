@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/05 14:49:52 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 18:19:54 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int		main(int argc, char **argv)
 	catch (std::exception	&error) {std::cout << error.what() << std::endl;return (-1);}
 
 	// Copy constructor test
-	// BitcoinExchange	test(argv[1]);
-	// BitcoinExchange	copy1(test);
-	// copy1.printData();
+	BitcoinExchange	test(argv[1]);
+	BitcoinExchange	copy1(test);
+	copy1.printData();
 
 	// = overload operator test
-	// BitcoinExchange	copy2;
-	// copy2 = copy1;
-	// copy2.printData();
+	BitcoinExchange	copy2;
+	copy2 = copy1;
+	copy2.printData();
 
 	return (0);
 }

@@ -6,13 +6,18 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:57:23 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/05 15:10:29 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:48:50 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::~BitcoinExchange(void)
+{
+	return ;
+}
+
+BitcoinExchange::BitcoinExchange(void)
 {
 	return ;
 }
@@ -204,6 +209,7 @@ void	BitcoinExchange::printData(void)
 		std::cout << MAGENTA << "Key : " << start->first << " | Value : " << std::setprecision(7) << start->second << RESET << std::endl;
 		++start;
 	}
+	std::cout << "------------------" << std::endl;
 	return ;
 }
 
