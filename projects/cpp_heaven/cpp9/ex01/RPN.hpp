@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/01/30 19:56:44 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:37:04 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,22 @@
 class	RPN
 {
 	private:
-	RPN(void)			{ return ; };
 	std::stack<double>	_stack;
 
 	public:
 	~RPN(void);
+	RPN(void);
 	RPN(const char *raw_expression);
 	RPN(const RPN &input);
 
-	// RPN&	operator=(const RPN &input);
+	RPN&	operator=(const RPN &input);
 
 	static std::string	trimLine(const std::string str);
 	static char			whatOperand(const char c);
 	void				parseExpression(const std::string expr);
 	void				getExpression(const char *raw_expression);
 	void				doMath(const char operand);
+	std::stack<double>	getStack(void);
 
 	class		InvalidCharacterInExpressionException: public std::exception
 	{

@@ -6,13 +6,18 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:57:23 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/01/30 19:39:29 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:43:58 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
 RPN::~RPN(void)
+{
+	return ;
+}
+
+RPN::RPN(void)
 {
 	return ;
 }
@@ -34,6 +39,18 @@ RPN::RPN(const RPN &input)
 {
 	*this = input;
 	return ;
+}
+
+std::stack<double>	RPN::getStack(void)
+{
+	return (this->_stack);
+}
+
+RPN&	RPN::operator=(const RPN &input)
+{
+	if (this->_stack != input._stack)
+		this->_stack = input._stack;
+	return (*this);
 }
 
 std::string RPN::trimLine(const std::string str)
@@ -165,9 +182,3 @@ void	RPN::getExpression(const char *raw_expression)
 
 	return ;
 }
-
-// RPN&	RPN::operator=(const RPN &input)
-// {
-// 	// this->_data = input.getData();
-// 	return (*this);
-// }
