@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/05 18:22:46 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:17:26 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # include <vector>		// for std::vector
 # include <deque>		// for std::deque
-# include <ctime>		// for timeval
+# include <ctime>		// for clock_t
 # include <cstdlib>
 # include <string.h>
 
@@ -127,8 +127,8 @@ void merge_sort(Iterator start, Iterator end)
 
 	// Recursively split the range in two
 	Iterator mid = start + (end - start) / 2;	// mid = container.begin() + container.size() / 2
-	mergeSort(start, mid);	// Sort left half
-	mergeSort(mid, end);	// Sort right half
+	merge_sort(start, mid);	// Sort left half
+	merge_sort(mid, end);	// Sort right half
 
 	// Merge the two sorted halves
 	typedef typename Iterator::value_type ValueType;

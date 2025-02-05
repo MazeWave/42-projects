@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:57:23 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/05 18:22:38 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 19:41:08 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,29 @@ PmergeMe::~PmergeMe(void)
 
 PmergeMe::PmergeMe(int argc, char **argv)
 {
+	std::clock_t	startTime;
+	std::clock_t	endTime;
+	double			elapsed_us;
 
 	PopulateContainers(argc, argv);
 	PrintContainer(this->_vdata, "Vector :        ");
 	PrintContainer(this->_ddata, "Deque :         ");
 
+	// std::vector sort
+	startTime = std::clock();
 	VectorMergeInstertSort();
+	endTime = std::clock();
+	elapsed_us = (endTime - startTime) / static_cast<double>(CLOCKS_PER_SEC) * 10.0;	// * 1000000.0
 	PrintContainer(this->_vdata, "Vector :        ");
+	std::cout << "Time to process a range of " << argc << " elements with std::vector : " << elapsed_us << "μs" << std::endl;
+
+	// std::deque sort
+	startTime = std::clock();
+	// DequeMergeInstertSort();
+	endTime = std::clock();
+	elapsed_us = (endTime - startTime) / static_cast<double>(CLOCKS_PER_SEC) * 10.0;
+	PrintContainer(this->_ddata, "Deque :         ");
+	std::cout << "Time to process a range of " << argc << " elements with std::deque  : " << elapsed_us << "μs" << std::endl;
 
 	return ;
 }
