@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/05 14:48:20 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:05:51 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ class	BitcoinExchange
 # define ERR_BAD_DATE	"Error: bad input => "
 # define ERR_NEG_NUMBER	"Error: not a positive number."
 # define ERR_TOO_LARGE	"Error: too large a number."
+# define ERR_INCOMPLATE_DATE	"Error: incomplete date."
 
 /******************* COLORS *********************/
 # define RESET		"\033[0m"

@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:57:23 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/05 14:48:33 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 15:10:29 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,9 +130,15 @@ bool	BitcoinExchange::checkDate(const std::string date)
 	std::string	str = trimLine(date);
 	// Check line's lenght and '-' presence
 	if (str.size() < 10)
+	{
+		std::cout << RED << ERR_INCOMPLATE_DATE << RESET << std::endl;
 		return (false);
+	}
 	if (str[4] != '-' || str[7] != '-')
+	{
+		std::cout << RED << ERR_INCOMPLATE_DATE << RESET << std::endl;
 		return (false);
+	}
 
 	// Date format : YYYY-MM-DD : 2020-02-29
 	unsigned short	year =	std::atol((str.substr(0,4)).c_str());
@@ -152,7 +158,10 @@ bool	BitcoinExchange::checkDate(const std::string date)
 	}
 
 	if (year > 9999 || month < 1 || month > 12 || day < 1 || day > daysInMonth[month - 1])
+	{
+		std::cout << RED << ERR_BAD_DATE << str.substr(0, 10) << RESET << std::endl;
 		return (false);
+	}
 	return (true);
 }
 
@@ -230,12 +239,13 @@ double	BitcoinExchange::getRate(const unsigned long date)
 void	BitcoinExchange::getExchangeRate(const std::string raw)
 {
 	unsigned long	wanted_date = readDate(raw);
-	// std::cout << YELLOW << wanted_date << RESET << std::endl;
 	unsigned long	nearest_date = findDateInDataBase(wanted_date);
 	double			value = readValue(raw);
 	double			rate = getRate(nearest_date);
 
 	if (trimLine(raw).size() < 10)
+		return ;
+	if (checkDate(raw) == false)
 		return ;
 	if (checkValue(value * rate) && checkValue(value) && checkValue(rate))
 		std::cout << trimLine(raw).substr(0, 10) << " => " << value << " => " << std::setprecision(8) << value * rate << std::endl;
