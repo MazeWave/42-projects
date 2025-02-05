@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/04 19:15:57 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 01:13:27 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ class	PmergeMe
 	void	VectorMergeInstertSort(void);
 	// void	DequeMergeInstertSort();
 
-	// std::vector<unsigned long>	RecursiveSort(std::vector<unsigned long> input);
+	static unsigned long	Power(unsigned long n, const unsigned short pow);
+	static unsigned long	GetJacobNumber(unsigned long n);
 };
 
 /****************** FUNCTIONS *******************/
@@ -78,8 +79,97 @@ void	PrintContainer(const T &container, const std::string message)
 	return ;
 }
 
-// template <typename T>
-// T&	RecursiveSort()
+template <typename T>
+bool	IsSorted(const T &container)
+{
+	unsigned short	size = container.size();
+	T				sorted = container;
+
+	// Create our sorted container
+	std::sort(sorted.begin(), sorted.end());
+
+	// Compare it with the current container
+	for (unsigned short i = 0; i < size; i++)
+		if (container[i] != sorted[i])
+			return (false);
+	return (true);
+}
+
+template <typename Iterator>
+bool	IsSorted(const Iterator start, const Iterator end)
+{
+	unsigned long	n = *start;
+
+	// Compare it with the current container
+	while (start != end - 1)
+	{
+		if (n > *start + 1)
+			return (false);
+		++start;
+		n = *start;
+	}
+	return (true);
+}
+
+template <typename Iterator>
+void merge_sort(Iterator start, Iterator end)
+{
+	// Basic tests
+	// end - start : The distance between the to iterator hence the size of the container
+	if (end - start <= 1)
+		return ;
+	if (end - start == 2)
+	{
+		if (*(start + 1) < *start)
+			std::iter_swap(start, start + 1);
+		return ;
+	}
+
+	// Recursively split the range in two
+	Iterator mid = start + (end - start) / 2;	// mid = container.begin() + container.size() / 2
+	mergeSort(start, mid);	// Sort left half
+	mergeSort(mid, end);	// Sort right half
+
+	// Merge the two sorted halves
+	typedef typename Iterator::value_type ValueType;
+	std::vector<ValueType> temp;
+
+	Iterator left = start;
+	Iterator right = mid;
+
+
+	while (left != mid && right != end)
+	{
+		if (*left < *right)
+		{
+			temp.push_back(*left);
+			++left;
+		}
+		else
+		{
+			temp.push_back(*right);
+			++right;
+		}
+	}
+
+	// If any elements remain in the left half, add them
+	while (left != mid)
+	{
+		temp.push_back(*left);
+		++left;
+	}
+
+	// If any elements remain in the right half, add them
+	while (right != end)
+	{
+		temp.push_back(*right);
+		++right;
+	}
+
+	// Copy the sorted temp vector back into the original container
+	std::copy(temp.begin(), temp.end(), start);
+	return ;
+}
 
 /******************* COLORS *********************/
 # define RESET		"\033[0m"

@@ -2,5 +2,5 @@
 
 clear;
 make re;
-valgrind ./PmergeMe `shuf -i 0-19 -n 100 | tr "\n" " "`;
+valgrind ./PmergeMe `shuf -i 0-20 -n 100 | tr "\n" " "`;
 make fclean;

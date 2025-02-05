@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldalmass <ldalmass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:57:23 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/04 19:17:52 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 01:13:29 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ PmergeMe::~PmergeMe(void)
 
 PmergeMe::PmergeMe(int argc, char **argv)
 {
+
 	PopulateContainers(argc, argv);
 	PrintContainer(this->_vdata, "Vector :        ");
 	PrintContainer(this->_ddata, "Deque :         ");
@@ -51,38 +52,19 @@ void	PmergeMe::PopulateContainers(int argc, char **argv)
 	return ;
 }
 
-// std::vector<unsigned long>	PmergeMe::RecursiveSort(std::vector<unsigned long> input)
-// {
-// 	unsigned short				size = input.size();
-// 	std::vector<unsigned long>	temp;
+unsigned long	PmergeMe::Power(unsigned long n, const unsigned short pow)
+{
+	for (unsigned short i = 1; i < pow; i++)
+		n = n * n;
+	return (n);
+}
 
-// 	// Recursive pairs creation
-// 	if (size > 2)
-// 	{
-// 		temp.push_back(input.back());
-// 		input.pop_back();
-// 		temp.push_back(input.back());
-// 		input.pop_back();
-// 		PrintContainer(input, "input ");
-// 		PrintContainer(temp, "temp ");
-// 		RecursiveSort(input);
-// 	}
-
-// 	// Sort the current pair
-// 	// if (temp.size() == 2)
-// 	// {
-// 	// 	std::vector<unsigned long>::iterator	start = temp.begin();
-// 	// 	std::vector<unsigned long>::iterator	end = temp.end();
-// 	// 	if (*start > *start+1)
-// 	// 	{
-// 	// 		std::vector<unsigned long>::iterator	c;
-// 	// 		c = start;
-// 	// 		start = start+1;
-// 	// 		start+1 = c;
-// 	// 	}
-// 	// }
-// 	return (temp);
-// }
+unsigned long	PmergeMe::GetJacobNumber(unsigned long n)
+{
+	if (n <= 1)
+		return (n);
+	return (GetJacobNumber(n - 1) + 2 * GetJacobNumber(n - 2));
+}
 
 void	PmergeMe::VectorMergeInstertSort(void)
 {
@@ -91,9 +73,6 @@ void	PmergeMe::VectorMergeInstertSort(void)
 
 	std::vector<unsigned long>	max;
 	std::vector<unsigned long>	min;
-
-	// std::vector<unsigned long>::const_iterator	start = this->_vdata.begin();
-	// std::vector<unsigned long>::const_iterator	end = this->_vdata.end();
 
 	// Remove and store last element
 	if (size % 2 == 1)
@@ -128,9 +107,15 @@ void	PmergeMe::VectorMergeInstertSort(void)
 	PrintContainer(min, "min :           ");
 
 
-	// Sort min and max 
-	std::sort(max.begin(), max.end());
-	std::sort(min.begin(), min.end());
+	// Sort min and max recursively using merge sort
+	merge_sort(max.begin(), max.end());
+	merge_sort(min.begin(), min.end());
+
+	// Copy the sorted max container in the _vdata, then insert the first value of min in it
+	this->_vdata = max;
+	this->_vdata.insert(this->_vdata.begin(), min[0]);
+	min = std::vector<unsigned long>(min.begin()+1, min.end());
+	
 
 	// Re-input left over in 
 	// if (left_over != (unsigned long)-1)
