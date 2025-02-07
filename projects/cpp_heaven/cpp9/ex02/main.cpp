@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 17:52:13 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/03 16:51:47 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/07 20:03:43 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		main(int argc, char **argv)
 		(i + 1 != argc) ? inputs += ", " : inputs += "]";
 	}
 
-	std::cout << inputs << std::endl;
+	// std::cout << inputs << std::endl;
 
 	PmergeMe	Sorting(argc, argv);
 

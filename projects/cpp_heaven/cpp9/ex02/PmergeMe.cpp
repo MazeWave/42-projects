@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:57:23 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/05 19:41:08 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/07 20:06:42 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,37 @@ PmergeMe::PmergeMe(int argc, char **argv)
 	double			elapsed_us;
 
 	PopulateContainers(argc, argv);
-	PrintContainer(this->_vdata, "Vector :        ");
-	PrintContainer(this->_ddata, "Deque :         ");
+	// PrintContainer(this->_vdata, "Vector :        ");
+	// PrintContainer(this->_ddata, "Deque :         ");
 
 	// std::vector sort
 	startTime = std::clock();
-	VectorMergeInstertSort();
+	// VectorMergeInstertSort();
+	this->_vdata = merge_insertion_sort(this->_vdata);
 	endTime = std::clock();
-	elapsed_us = (endTime - startTime) / static_cast<double>(CLOCKS_PER_SEC) * 10.0;	// * 1000000.0
-	PrintContainer(this->_vdata, "Vector :        ");
+	elapsed_us = (endTime - startTime) / static_cast<double>(CLOCKS_PER_SEC) * 1000000.0;	// * 1000000.0
+	// PrintContainer(this->_vdata, "Vector :        ");
 	std::cout << "Time to process a range of " << argc << " elements with std::vector : " << elapsed_us << "μs" << std::endl;
 
 	// std::deque sort
 	startTime = std::clock();
+	this->_ddata = merge_insertion_sort(this->_ddata);
 	// DequeMergeInstertSort();
 	endTime = std::clock();
-	elapsed_us = (endTime - startTime) / static_cast<double>(CLOCKS_PER_SEC) * 10.0;
-	PrintContainer(this->_ddata, "Deque :         ");
+	elapsed_us = (endTime - startTime) / static_cast<double>(CLOCKS_PER_SEC) * 1000000.0;
+	// PrintContainer(this->_ddata, "Deque :         ");
 	std::cout << "Time to process a range of " << argc << " elements with std::deque  : " << elapsed_us << "μs" << std::endl;
+
+	if (IsSorted(this->_vdata) == true)
+		std::cout << GREEN << "DATA SORTED FOR std::vector" << RESET << std::endl;
+	else
+		std::cout << RED << "DATA NOT SORTED FOR std::vector" << RESET << std::endl;
+
+	if (IsSorted(this->_ddata) == true)
+		std::cout << GREEN << "DATA SORTED FOR std::deque" << RESET << std::endl;
+	else
+		std::cout << RED << "DATA NOT SORTED FOR std::deque" << RESET << std::endl;
+
 
 	return ;
 }
@@ -96,14 +109,18 @@ void	PmergeMe::VectorMergeInstertSort(void)
 	std::vector<unsigned long>	max;
 	std::vector<unsigned long>	min;
 
-	// Remove and store last element
+	/*STEP 1*/
+
+	// Get the left_over
 	if (size % 2 == 1)
 	{
 		left_over = this->_vdata.back();
 		this->_vdata.pop_back();
 	}
 
-	// Create pairs and move the larger number to max and lower number in min for each pairs
+	/*STEP 2*/
+
+	// Create pairs and move the larger number to max and the lower number in min for each pairs
 	while (this->_vdata.size() > 1)
 	{
 		unsigned long	a = this->_vdata.back();
@@ -119,7 +136,7 @@ void	PmergeMe::VectorMergeInstertSort(void)
 			b = c;
 		}
 
-		std::cout << GREEN << "a : " << a << " b : " << b << RESET << std::endl;
+		// std::cout << GREEN << "a : " << a << " b : " << b << RESET << std::endl;
 
 		max.push_back(a);
 		min.push_back(b);
@@ -128,24 +145,72 @@ void	PmergeMe::VectorMergeInstertSort(void)
 	PrintContainer(max, "max :           ");
 	PrintContainer(min, "min :           ");
 
+	/*STEP 3*/
 
 	// Sort min and max recursively using merge sort
 	merge_sort(max.begin(), max.end());
-	merge_sort(min.begin(), min.end());
+	// merge_sort(min.begin(), min.end());
 
-	// Copy the sorted max container in the _vdata, then insert the first value of min in it
+	/*STEP 4*/
+
+	// Copy the sorted max container in the _vdata, then insert the first value of min in it if we should
 	this->_vdata = max;
-	this->_vdata.insert(this->_vdata.begin(), min[0]);
-	min = std::vector<unsigned long>(min.begin()+1, min.end());
+	if (this->_vdata[0] >= min[0])
+	{
+		this->_vdata.insert(this->_vdata.begin(), min[0]);
+		min = std::vector<unsigned long>(min.begin()+1, min.end());
+	}
+
+	/*STEP 5*/
+
+	unsigned short	maxJacobVal = 0;
 	
+	while (GetJacobNumber(++maxJacobVal) < min.size())
+		continue;
+	// maxJacobVal--;
 
-	// Re-input left over in 
-	// if (left_over != (unsigned long)-1)
-	// {
-		
-	// }
+	std::vector<unsigned long>	JacobList;
 
-	std::cout << GREEN << "left_over : " << left_over << RESET << std::endl;
+	for (unsigned short i = 3; i < maxJacobVal; i++)
+		JacobList.push_back(GetJacobNumber(i));
+	PrintContainer(JacobList, "Jacob LIST : ");
+	PrintContainer(min, "minnnnnnnn : ");
+
+	std::cout << CYAN << "prout 1" << RESET << std::endl;
+
+	// Insert value with jacob list
+	PrintContainer(this->_vdata, "BEFORE VECTOR");
+	for(unsigned short i = 0; i < JacobList.size(); i++)
+	{
+		// std::lower_bound() use binary search for efficiency
+		std::cout << MAGENTA << "Inserting at index " << JacobList[i] << " number " << min[JacobList[i]] << RESET << std::endl;
+		this->_vdata.insert(std::lower_bound(_vdata.begin(), this->_vdata.end(), min[JacobList[i]]), min[JacobList[i]]);
+		PrintContainer(this->_vdata, "       VECTOR");
+	}
+
+	std::cout << "min size : " << min.size() << std::endl;
+	std::cout << CYAN << "prout 2" << RESET << std::endl;
+
+	for (unsigned short i = 0; i < min.size(); i++)
+	{
+		std::cout << RED << i << RESET << std::endl;
+		if (JacobList.end() != std::find(JacobList.begin(), JacobList.end(), i))
+		{
+			std::cout << MAGENTA << "SKIPPED " << i << " BECAUSE ALREADY ADDED BEFORE" << RESET << std::endl;
+			continue;
+		}
+		else
+		{
+			this->_vdata.insert(std::lower_bound(_vdata.begin(), this->_vdata.end(), min[i]), min[i]);
+		}
+	}
+
+	std::cout << "min size : " << min.size() << std::endl;
+
+	/* STEP 6 */
+
+	if (left_over != static_cast<unsigned long>(-1))
+		this->_vdata.insert(std::lower_bound(_vdata.begin(), this->_vdata.end(), left_over), left_over);
 
 	PrintContainer(max, "max :           ");
 	PrintContainer(min, "min :           ");

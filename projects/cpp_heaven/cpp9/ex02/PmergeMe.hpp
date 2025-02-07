@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/05 19:17:26 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/07 20:23:40 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,6 @@ class	PmergeMe
 	private:
 	std::vector<unsigned long>	_vdata;
 	std::deque<unsigned long>	_ddata;
-	/*
-	Both vectors and deques provide a very similar interface and can be used for similar purposes,
-	but internally both work in quite different ways:
-	While vectors use a single array that needs to be occasionally reallocated for growth,
-	the elements of a deque can be scattered in different chunks of storage,
-	with the container keeping the necessary information internally to provide direct access
-	to any of its elements in constant time and with a uniform sequential interface (through iterators).
-	Therefore, deques are a little more complex internally than vectors,
-	but this allows them to grow more efficiently under certain circumstances,
-	especially with very long sequences, where reallocations become more expensive.
-	*/
 
 	public:
 	~PmergeMe(void);
@@ -53,7 +42,6 @@ class	PmergeMe
 	PmergeMe&	operator=(const PmergeMe &input);
 
 	void	PopulateContainers(int argc, char **argv);
-
 	void	VectorMergeInstertSort(void);
 	// void	DequeMergeInstertSort();
 
@@ -132,7 +120,7 @@ void merge_sort(Iterator start, Iterator end)
 
 	// Merge the two sorted halves
 	typedef typename Iterator::value_type ValueType;
-	std::vector<ValueType> temp;
+	std::deque<ValueType> temp;
 
 	Iterator left = start;
 	Iterator right = mid;
@@ -169,6 +157,93 @@ void merge_sort(Iterator start, Iterator end)
 	// Copy the sorted temp vector back into the original container
 	std::copy(temp.begin(), temp.end(), start);
 	return ;
+}
+
+template <typename Container>
+Container	merge_insertion_sort(Container input)
+{
+	unsigned short	size = input.size();
+	unsigned long	left_over = -1;
+
+	Container	max;
+	Container	min;
+
+/*STEP 1*/
+
+	// Get the left_over
+	if (size % 2 == 1)
+	{
+		left_over = input.back();
+		input.pop_back();
+	}
+
+/*STEP 2*/
+
+	// Create pairs and move the larger number to max and the lower number in min for each pairs
+	while (input.size() > 1)
+	{
+		unsigned long	a = input.back();
+		input.pop_back();
+		unsigned long	b = input.back();
+		input.pop_back();
+		unsigned long	c;
+	
+		if (a < b)
+		{
+			c = a;
+			a = b;
+			b = c;
+		}
+
+		max.push_back(a);
+		min.push_back(b);
+	}
+
+/*STEP 3*/
+
+	// Sort min recursively using merge sort
+	merge_sort(max.begin(), max.end());
+
+	/*STEP 4*/
+
+	// Copy the sorted max container in the _vdata, then insert the first value of min in it if we should
+	input = max;
+	if (input[0] >= min[0])
+	{
+		input.insert(input.begin(), min[0]);
+		min = Container(min.begin()+1, min.end());
+	}
+
+/*STEP 5*/
+
+	unsigned short	maxJacobVal = 0;
+	
+	while (PmergeMe::GetJacobNumber(++maxJacobVal) < min.size())
+		continue;
+
+	std::vector<unsigned long>	JacobList;
+
+	for (unsigned short i = 3; i < maxJacobVal; i++)
+		JacobList.push_back(PmergeMe::GetJacobNumber(i));
+
+	// Insert value with jacob list
+	for(unsigned short i = 0; i < JacobList.size(); i++)
+		input.insert(std::lower_bound(input.begin(), input.end(), min[JacobList[i]]), min[JacobList[i]]);	// std::lower_bound() use binary search for efficiency
+
+	for (unsigned short i = 0; i < min.size(); i++)
+	{
+		if (JacobList.end() != std::find(JacobList.begin(), JacobList.end(), i))
+			continue;
+		else
+			input.insert(std::lower_bound(input.begin(), input.end(), min[i]), min[i]);
+	}
+
+/* STEP 6 */
+
+	if (left_over != static_cast<unsigned long>(-1))
+		input.insert(std::lower_bound(input.begin(), input.end(), left_over), left_over);
+
+	return (input);
 }
 
 /******************* COLORS *********************/
