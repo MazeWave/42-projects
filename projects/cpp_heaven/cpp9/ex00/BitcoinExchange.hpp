@@ -6,7 +6,7 @@
 /*   By: ldalmass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:06 by ldalmass          #+#    #+#             */
-/*   Updated: 2025/02/05 15:05:51 by ldalmass         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:19:40 by ldalmass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ class	BitcoinExchange
 	std::map<unsigned long, double>	_data;
 
 	public:
-	BitcoinExchange(void)			{ return ; };
 	~BitcoinExchange(void);
+	BitcoinExchange(void);
 	BitcoinExchange(const char *path);
 	BitcoinExchange(const BitcoinExchange &input);
 
